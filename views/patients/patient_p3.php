@@ -18,63 +18,9 @@
         
         require_once(SKEL_DIR . "/contentWrapper.php");
 
-        // Creamos la función fcolor para cambiar el color de las casillas en las tablas según la numeración
-        // si es tipo 3 son valores del 0..3 y el resto valores del 0..5
-        function fcolor ($value, $tipo) {
-
-            if ($tipo == 3) {
-
-                switch ($value) {
-                    case "0":
-                        $text_color = "text-success";
-                        break;
-                            
-                    case "1":
-                        $text_color = "text-primary";
-                        break;
-                    
-                    case "2":
-                        $text_color = "text-warning";
-                        break;
-
-                    case "3":
-                        $text_color = "text-danger";
-                        break;
-                    
-                } //End switch
-            } else {
-            
-                switch ($value) {
-                    case "0":
-                        $text_color = "text-success";
-                        break;
-                            
-                    case "1":
-                        $text_color = "text-success";
-                        break;
-                    
-                    case "2":
-                        $text_color = "text-primary";
-                        break;
-
-                    case "3":
-                        $text_color = "text-warning";
-                        break;
-
-                    case "4":
-                        $text_color = "text-warning";
-                        break;
-
-                    case "5":
-                        $text_color = "text-danger";
-                        break;
-                    
-                } //End switch
-                
-            }//End if
-            return $text_color;
-
-        }// End function
+        require_once("patient_blocks.php");
+        
+        require_once("patient_functions.php");
 
 ?>
         <!-- Begin Page Content -->
@@ -90,108 +36,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <?php
-                            
-                            //Contamos las líneas de barthel de un usuario
-                            $num_patients_barthel = count($patients_barthel);
-                            
-                            for ($i = 0; $i < $num_patients_barthel; $i++) {
-
-                                $patients_barthel_object = (object)$patients_barthel[$i];
-
-                                //guardamos la fecha
-                                $patients_barthel_time_stamp = $patients_barthel_object -> getCreateTs();
-
-                                #Creamos el objeto
-                                $patients_barthel_time_stamp_object =new DateTime($patients_barthel_time_stamp);
-                                
-                                //Lo vamos guardoad en el formato deseado en un array (quedan todas las líneas guardadas y por tanto hay repetido)
-                                //Fuera del for quitamos las repetidas
-                                $patients_barthel_date_dd_mm_yyyy_raw[] = $patients_barthel_time_stamp_object->format("j/m/Y"); 
-                                
-                                //obtenemos la puntación de barthel
-                                $patients_barthel_score[] = $patients_barthel_object -> getScore();
-
-                                //Obtenemos el resto de datos
-                                $patien_barthel_bowels[] = $patients_barthel_object -> getBowels();
-                                $patien_barthel_bladder[] = $patients_barthel_object -> getBladder();
-                                $patien_barthel_grooming[] = $patients_barthel_object -> getGrooming();
-                                $patien_barthel_toilet_use[] = $patients_barthel_object -> getToiletUse();
-                                $patien_barthel_feeding[] = $patients_barthel_object -> getFeeding();
-                                $patien_barthel_transfer[] = $patients_barthel_object -> getTransfer();
-                                $patien_barthel_mobility[] = $patients_barthel_object -> getMobility();
-                                $patien_barthel_dressing[] = $patients_barthel_object -> getDressing();
-                                $patien_barthel_stairs[] = $patients_barthel_object -> getStairs();
-                                $patien_barthel_bathing[] = $patients_barthel_object -> getBathing();
-
-                            } //end for
-
-                            //Contamos las líneas de ecfs de un usuario
-                            $num_patients_ecfs = count($patients_ecfs);
-                            
-                            for ($i = 0; $i < $num_patients_ecfs; $i++) {
-
-                                $patients_ecfs_object = (object)$patients_ecfs[$i];
-
-                                //guardamos la fecha
-                                $patients_ecfs_time_stamp = $patients_ecfs_object -> getCreateTs();
-
-                                #Creamos el objeto
-                                $patients_ecfs_time_stamp_object =new DateTime($patients_ecfs_time_stamp);
-                                
-                                //Lo vamos guardoad en el formato deseado en un array (quedan todas las líneas guardadas y por tanto hay repetido)
-                                //Fuera del for quitamos las repetidas
-                                $patients_ecfs_date_dd_mm_yyyy_raw[] = $patients_ecfs_time_stamp_object->format("j/m/Y"); 
-                                
-                                //obtenemos la puntación de ecfs
-                                $patients_ecfs_score[] = $patients_ecfs_object -> getScore();
-
-                                //Obtenemos el resto de datos
-                                $patients_ecfs_weigh[] = $patients_ecfs_object -> getWeigh();
-                                $patients_ecfs_shortBreath[] = $patients_ecfs_object -> getShortBreath();
-                                $patients_ecfs_shortBreathIncrease[] = $patients_ecfs_object -> getShortBreathIncrease();
-                                $patients_ecfs_feetSwollen[] = $patients_ecfs_object -> getFeetSwollen();
-                                $patients_ecfs_twoKg[] = $patients_ecfs_object -> getTwoKg();
-                                $patients_ecfs_fluidsLimit[] = $patients_ecfs_object -> getFluidsLimit();
-                                $patients_ecfs_restDay[] = $patients_ecfs_object -> getRestDay();
-                                $patients_ecfs_increaseFatigue[] = $patients_ecfs_object -> getIncreaseFatigue();
-                                $patients_ecfs_lowSaltDiet[] = $patients_ecfs_object -> getLowSaltDiet();
-                                $patients_ecfs_medicine[] = $patients_ecfs_object -> getMedicine();
-                                $patients_ecfs_fluShot[] = $patients_ecfs_object -> getFluShot();
-                                $patients_ecfs_exercise[] = $patients_ecfs_object -> getExercise();
-
-                            } //End for
-
-                            //Contamos las líneas de gijon de un usuario
-                            $num_patients_gijon = count($patients_gijon);
-                            
-                            for ($i = 0; $i < $num_patients_gijon; $i++) {
-
-                                $patients_gijon_object = (object)$patients_gijon[$i];
-
-                                //guardamos la fecha
-                                $patients_gijon_time_stamp = $patients_gijon_object -> getCreateTs();
-
-                                #Creamos el objeto
-                                $patients_gijon_time_stamp_object =new DateTime($patients_gijon_time_stamp);
-                                
-                                //Lo vamos guardoad en el formato deseado en un array (quedan todas las líneas guardadas y por tanto hay repetido)
-                                //Fuera del for quitamos las repetidas
-                                $patients_gijon_date_dd_mm_yyyy_raw[] = $patients_gijon_time_stamp_object->format("j/m/Y"); 
-                                
-                                //obtenemos la puntación de gijon
-                                $patients_gijon_score[] = $patients_gijon_object -> getScore();
-
-                                //Obtenemos el resto de datos
-                                $patients_gijon_familySituation[] = $patients_gijon_object -> getFamilySituation();
-                                $patients_gijon_economicSituation[] = $patients_gijon_object -> getEconomicSituation();
-                                $patients_gijon_livingPlace[] = $patients_gijon_object -> getLivingPlace();
-                                $patients_gijon_socialRelation[] = $patients_gijon_object -> getSocialRelation();
-                                $patients_gijon_supportSocial[] = $patients_gijon_object -> getSupportSocial();
-
-                            } //End for
-
-                        ?>
+                        
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-header">

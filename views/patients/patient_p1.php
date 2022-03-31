@@ -19,15 +19,6 @@
 
         $num_patients_historics = count($patients_historics);
 
-        // Guardamos en un array los datos del historico de pacientes ordenados de más modernos a más viejos
-        // por tanto el valor 0 es el último valor registrado y el valor num_patients_historics -1  es el primero.
-        /*
-        for ($i = 0; $i < $num_patients_historics; $i++) {
-
-            (object)$patients_historics[$i];
-
-        } // End For
-*/
 ?>
         <!-- Begin Page Content -->
         <div class="container-fluid">

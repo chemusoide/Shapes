@@ -18,6 +18,8 @@
         
         require_once(SKEL_DIR . "/contentWrapper.php");
 
+        require_once("patient_blocks.php");
+
 ?>
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -90,92 +92,7 @@
                 <!-- /.card-body --> 
             </div>
             <!-- /.card-shadow -->
-            
-            <?php 
-                
-                //Contamos los datos de analiticas
-                $num_patients_lab_analytics = count($patients_lab_analytics);
-
-                // Recorremos el listado y seleccionamos de todos los datos del tipo
-                // peso y los ponemos en un array, como el array está ordenado por fecha
-                // el primer peso (que será la última medida)
-
-                //var_dump ($patients_lab_analytics);
-            
-                for ($i = 0; $i < $num_patients_lab_analytics; $i++) {
-                        
-                    $patients_lab_analytics_object = (object)$patients_lab_analytics[$i];
-
-                    //guardamos la fecha
-                    $patients_lab_analytics_time_stamp = $patients_lab_analytics_object -> getRecordDate();
-
-                    #Creamos el objeto
-                    $patients_lab_analytics_time_stamp_object =new DateTime($patients_lab_analytics_time_stamp);
-                    
-                    //Lo vamos guardoad en el formato deseado en un array (quedan todas las líneas guardadas y por tanto hay repetido)
-                    //Fuera del for quitamos las repetidas
-                    $patients_lab_analytics_date_dd_mm_yyyy_raw[] = $patients_lab_analytics_time_stamp_object->format("j/m/Y"); 
-
-                    //cogemos los datos y miramos el tipo de dato que es
-                    $patients_lab_analytics_type = $patients_lab_analytics_object -> getLabParam();
-
-                    //Miramos esl tipo de dato y lo guardamos en un array por clase
-                    //con los datos cronológicos de más reciente[0] a más antiguo[n]
-                    switch ($patients_lab_analytics_type) {
-                        
-                        case "U":
-                            $u[] = $patients_lab_analytics_object -> getLabvalue();
-                        break;
-
-                        case "C":
-                            $c[] = $patients_lab_analytics_object -> getLabvalue();
-                        break;
-
-                        case "S":
-                            $s[] = $patients_lab_analytics_object -> getLabvalue();
-                        break;
-
-                        case "P":
-                            $p[] = $patients_lab_analytics_object -> getLabvalue();
-                        break;
-
-                        case "H":
-                            $h[] = $patients_lab_analytics_object -> getLabvalue();
-                        break;
-
-                        case "CT":
-                            $ct[] = $patients_lab_analytics_object -> getLabvalue();
-                        break;
-
-                        case "LDL":
-                            $ldl[] = $patients_lab_analytics_object -> getLabvalue();
-                        break;
-
-                        case "HDL":
-                            $hdl[] = $patients_lab_analytics_object -> getLabvalue();
-                        break;
-
-                        case "eGFR":
-                            $egfr[] = $patients_lab_analytics_object -> getLabvalue();
-                        break;
-
-                        case "UP":
-                            $up[] = $patients_lab_analytics_object -> getLabvalue();
-                        break;
-
-                        default:
-                            echo "Dato no esperado";
-
-                    } //End switch
-
-                } // End for
-
-                //Quitamos los valores repetidos de fecha en el array los guarda en indices 0, 10, 20, 30...:
-                $patients_lab_analytics_date_dd_mm_yyyy = array_unique($patients_lab_analytics_date_dd_mm_yyyy_raw);
-
-            ?>
-
-
+    
             <!-- DataTales -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
