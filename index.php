@@ -13,8 +13,16 @@
     // esta constante no existirá y no mostraremos nada
     define("SECURITY_CONSTANT", "chema");
     
-    session_name("shapes");
+    //session_name("shapes");
     session_start();
+    /*
+    if( $_COOKIE['shapes'] )
+    {
+
+        session_id( $_COOKIE['shapes'] );
+        session_start();
+    }
+    */
     require_once("config.php");
 
     $allowedControllers = unserialize(ALLOWED_CONTROLLERS);

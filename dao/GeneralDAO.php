@@ -1,12 +1,13 @@
 <?php
 //control sesion
+/*
 if( $_COOKIE['shapes'] )
 {
 
     session_id( $_COOKIE['shapes'] );
     session_start();
 }
-
+*/
 require_once("adodb5/adodb.inc.php");
 // TODO: try-catch para AdoDB...
 
@@ -19,7 +20,8 @@ class GeneralDAO {
             $DB = NewADOConnection(DB_DRIVER);
             $DB->Connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
             $DB->SetFetchMode(ADODB_FETCH_ASSOC);
-            $DB->debug = (DB_DEBUGMODE == "true") ? true : false;
+            //$DB->debug = (DB_DEBUGMODE == "true") ? true : false;
+            $DB->debug = false;
 
             return $DB;
             
