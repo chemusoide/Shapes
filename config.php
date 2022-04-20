@@ -45,6 +45,14 @@
      define("DB_DATABASE", "shapes");
     // define("DB_DEBUGMODE", "false"); // Ojo, a true desactiva las citas vía AJAX/JSON.
 
-
+     /********************************************************
+     *** Database access configuration REMOTA ****************
+    ********************************************************/
+    //define("DB_DRIVER", "mysqli"); //este para que coja la conexión mysqli sino en versiones altas de PHP no fucniona
+    //define("DB_HOST", 'localhost');
+    //define("DB_USER", 'usushapesdes');
+    //define("DB_PASSWORD", '270}|$UAa7J3');
+    //define("DB_DATABASE", 'shapes');
+    //define("DB_DEBUGMODE", "false"); // Ojo, a true desactiva las citas vía AJAX/JSON.
 
 ?>
