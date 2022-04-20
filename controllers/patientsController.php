@@ -12,6 +12,7 @@
         include_once(DAO_DIR . "/patients_ecfs/Patients_ecfsDAO.php");
         include_once(DAO_DIR . "/patients_gijon/Patients_gijonDAO.php");
         include_once(DAO_DIR . "/patients_historics/Patients_historicsDAO.php");
+        include_once(DAO_DIR . "/patients_chatbot/Patients_chatbotDAO.php");
 
         $patientsDAO = new PatientsDAO();
         $patien_historicsDAO = new Patients_historicsDAO();
@@ -23,25 +24,14 @@
         $patients_ecfsDAO = new Patients_ecfsDAO();
         $patients_gijonDAO = new Patients_gijonDAO();
         $patients_historicsDAO = new Patients_historicsDAO();
+        $patients_chatbotDAO  = new Patients_chatbotDAO();
 
                         
         // Resto de opciones
         if (isset($_GET["option"])) {
         
             switch ($_GET["option"]) {
-/*
-                case "panel":
-                    $patients = $patientsDAO -> getAllregisters();
-                    $patients_historics = $patien_historicsDAO -> getAllregisters();
-                    $patients_devices = $patients_devicesDAO -> getAllregisters();
-                    $patients_medicines = $patients_medicinesDAO -> getAllregisters();
-                    $patients_lab_analytics = $patients_lab_analyticsDAO -> getAllregisters();
-                    $patients_barthel = $patients_barthelDAO -> getAllregisters();
-                    $patients_ecfs = $patients_ecfsDAO -> getAllregisters();
-                    $patients_gijon = $patients_gijonDAO -> getAllregisters();
-                    require_once(VIEWS_DIR . "/patients/patient_panel.php");
-                    break;
-*/
+
                 case "list":
                     $patients = $patientsDAO -> getAllregisters();
                     require_once(VIEWS_DIR . "/patients/patients_list.php");
@@ -66,6 +56,7 @@
                     $patients_barthel = $patients_barthelDAO -> getAllregistersForPatient($_GET["id"]);
                     $patients_ecfs = $patients_ecfsDAO -> getAllregistersForPatient($_GET["id"]);
                     $patients_gijon = $patients_gijonDAO -> getAllregistersForPatient($_GET["id"]);
+                    $patients_chatbot = $patients_chatbotDAO -> getAllregistersForPatient($_GET["id"]);
                     require_once(VIEWS_DIR . "/patients/patient_p3.php");
                     break;
 

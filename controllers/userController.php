@@ -126,7 +126,7 @@
 								curl_close($ch);
 
 								$data = json_decode($result);
-						
+
 							}
 							catch (Exception $e) {
 								echo 'Excepción capturada: ',  $e->getMessage(), "\n";

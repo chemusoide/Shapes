@@ -127,7 +127,7 @@
                         SELECT patients.id_string FROM patients JOIN patients_chatbot 
                             ON patients.id = patients_chatbot.user_id
                         WHERE (
-                            (patients_chatbot.pregunta = 8 AND patients_chatbot.cuestionario = 1 AND patients_chatbot.respuesta IS NOT NULL) AND
+                            (patients_chatbot.pregunta = 8 AND idcuestionario = 1 AND patients_chatbot.respuesta IS NOT NULL) AND
                 
                             (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
                 
@@ -272,7 +272,7 @@
                 "SELECT * FROM patients JOIN patients_chatbot 
                     ON patients.id = patients_chatbot.user_id
                 WHERE (
-                    (patients_chatbot.pregunta = 2 AND patients_chatbot.cuestionario = 3 AND patients_chatbot.respuesta = 'Sí') AND
+                    (patients_chatbot.pregunta = 2 AND idcuestionario = 3 AND patients_chatbot.respuesta = 'Sí') AND
             
                     (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
             
@@ -320,7 +320,7 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.user_id
                 WHERE (
-                    (patients_chatbot.pregunta = 3 AND patients_chatbot.cuestionario = 3 AND patients_chatbot.respuesta = 'Sí') AND
+                    (patients_chatbot.pregunta = 3 AND idcuestionario = 3 AND patients_chatbot.respuesta = 'Sí') AND
             
                     (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
             
@@ -366,7 +366,7 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.user_id
                 WHERE (
-                    (patients_chatbot.pregunta = 4 AND patients_chatbot.cuestionario = 3 AND patients_chatbot.respuesta = 'Sí') AND
+                    (patients_chatbot.pregunta = 4 AND idcuestionario = 3 AND patients_chatbot.respuesta = 'Sí') AND
             
                     (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
             
@@ -412,7 +412,7 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.user_id
                 WHERE (
-                    (patients_chatbot.pregunta = 1 AND patients_chatbot.cuestionario = 3 AND patients_chatbot.respuesta = 'Sí') AND
+                    (patients_chatbot.pregunta = 1 AND idcuestionario = 3 AND patients_chatbot.respuesta = 'Sí') AND
             
                     (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
             
@@ -458,7 +458,7 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.user_id
                 WHERE (
-                    (patients_chatbot.pregunta = 2 AND patients_chatbot.cuestionario = 1 AND patients_chatbot.respuesta = 'peor') AND
+                    (patients_chatbot.pregunta = 2 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'peor') AND
             
                     (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
             
@@ -504,7 +504,7 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.user_id
                 WHERE (
-                    (patients_chatbot.pregunta = 10 AND patients_chatbot.cuestionario = 1 AND patients_chatbot.respuesta = 'YES') AND
+                    (patients_chatbot.pregunta = 10 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'YES') AND
             
                     (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
             
@@ -550,7 +550,7 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.user_id
                 WHERE (
-                    (patients_chatbot.pregunta = 9 AND patients_chatbot.cuestionario = 1 AND patients_chatbot.respuesta = 'menos') AND
+                    (patients_chatbot.pregunta = 9 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'menos') AND
             
                     (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
             
@@ -596,7 +596,7 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.user_id
                 WHERE (
-                    (patients_chatbot.pregunta = 7 AND patients_chatbot.cuestionario = 1 AND patients_chatbot.respuesta = 'SÍ') AND
+                    (patients_chatbot.pregunta = 7 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'SÍ') AND
             
                     (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
             
@@ -642,7 +642,7 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.user_id
                 WHERE (
-                    (patients_chatbot.pregunta = 6 AND patients_chatbot.cuestionario = 1 AND patients_chatbot.respuesta = 'SÍ') AND
+                    (patients_chatbot.pregunta = 6 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'SÍ') AND
             
                     (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
             
@@ -688,7 +688,7 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.user_id
                 WHERE (
-                    (patients_chatbot.pregunta = 5 AND patients_chatbot.cuestionario = 1 AND patients_chatbot.respuesta = 'SÍ') AND
+                    (patients_chatbot.pregunta = 5 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'SÍ') AND
             
                     (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
             
@@ -734,7 +734,7 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.user_id
                 WHERE (
-                    (patients_chatbot.pregunta = 4 AND patients_chatbot.cuestionario = 1 AND patients_chatbot.respuesta = 'SÍ') AND
+                    (patients_chatbot.pregunta = 4 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'SÍ') AND
             
                     (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
             
@@ -780,7 +780,7 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.user_id
                 WHERE (
-                    (patients_chatbot.pregunta = 1 AND patients_chatbot.cuestionario = 1 AND (patients_chatbot.respuesta = 'peor' || patients_chatbot.respuesta = 'igual') ) AND
+                    (patients_chatbot.pregunta = 1 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'peor' || patients_chatbot.respuesta = 'igual') ) AND
             
                     (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
             

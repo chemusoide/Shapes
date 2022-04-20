@@ -6,6 +6,7 @@
         if ($tipo == 3) {
 
             switch ($value) {
+
                 case "0":
                     $text_color = "text-success";
                     break;
@@ -21,11 +22,53 @@
                 case "3":
                     $text_color = "text-danger";
                     break;
+
+            } // End switch
+            
+        }elseif ($tipo == 2) {
+
+            switch ($value) {
+
+                case "N/D":
+                    $text_color = "text-primary";
+                    break;
+                        
+                case "mejor":
+                    $text_color = "text-success";
+                    break;
                 
-            } //End switch
-        } else {
+                case "igual":
+                    $text_color = "text-warning";
+                    break;
+
+                case "peor":
+                    $text_color = "text-danger";
+                    break;
+
+            } // End switch
+
+        }elseif ($tipo == 1) {
+
+            switch ($value) {
+
+                case "NA":
+                    $text_color = "text-primary";
+                    break;
+                        
+                case "SÍ":
+                    $text_color = "text-danger";
+                    break;
+                
+                case "NO":
+                    $text_color = "text-success";
+                    break;
+
+            } // End switch
+
+        }else {
         
             switch ($value) {
+
                 case "0":
                     $text_color = "text-success";
                     break;
@@ -49,7 +92,7 @@
                 case "5":
                     $text_color = "text-danger";
                     break;
-                
+
             } //End switch
             
         }//End if

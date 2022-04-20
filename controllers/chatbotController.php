@@ -17,6 +17,7 @@
 	        switch ($_GET["option"]) {
 	
 	            case "panel":
+					
 	                $alarm_1_1 = $patientsDAO -> getAlarm_1_1();
 					$alarm_1_2 = $patientsDAO -> getAlarm_1_2();
 					$alarm_1_3 = $patientsDAO -> getAlarm_1_3();

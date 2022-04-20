@@ -209,4 +209,185 @@
         $patients_gijon_supportSocial[] = $patients_gijon_object -> getSupportSocial();
 
     } //End for
+
+    // Contamos las líneas de chatbot de un usuario
+    // En este caso nos vienen muchas líneas porque hay una por cada pregunta-respuesta
+    $num_patients_chatbot = count($patients_chatbot);
+    
+    // Recorremos todo el bloque para sacar los datos.
+    for ($i = 0; $i < $num_patients_chatbot; $i++) {
+
+        $patients_chatbot_object = (object)$patients_chatbot[$i];
+
+        //guardamos la fecha
+        $patients_chatbot_time_stamp = $patients_chatbot_object -> getCreateTs();
+
+        #Creamos el objeto
+        $patients_chatbot_time_stamp_object =new DateTime($patients_chatbot_time_stamp);
+        
+        //Lo vamos guardoad en el formato deseado en un array (quedan todas las líneas guardadas y por tanto hay repetido)
+        //Fuera del for quitamos las repetidas
+        $patients_chatbot_date_dd_mm_yyyy_raw[] = $patients_chatbot_time_stamp_object->format("j/m/Y"); 
+
+        // Separamos las preguntas según cuestionario y preguta
+        // empezamos por la pregunta 2 porque la 1 es irrelevante.
+
+
+        // Respuesta a cuestionario 1 respuesta 2
+        if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "2"){
+
+            $patients_chatbot_respuesta_1_2[] = $patients_chatbot_object -> getRespuesta();
+
+        } // end if
+
+        // Respuesta a cuestionario 1 respuesta 3
+        if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "3"){
+
+            $patients_chatbot_respuesta_1_3[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+        
+        // Respuesta a cuestionario 1 respuesta 4
+        if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "4"){
+
+            $patients_chatbot_respuesta_1_4[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 1 respuesta 5
+        if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "5"){
+
+            $patients_chatbot_respuesta_1_5[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+        
+        // Respuesta a cuestionario 1 respuesta 6
+        if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "6"){
+
+            $patients_chatbot_respuesta_1_6[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 1 respuesta 7
+        if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "7"){
+
+            $patients_chatbot_respuesta_1_7[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 1 respuesta 8
+        if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "8"){
+
+            $patients_chatbot_respuesta_1_8[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 1 respuesta 9
+        if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "9"){
+
+            $patients_chatbot_respuesta_1_9[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 1 respuesta 10
+        if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "10"){
+
+            $patients_chatbot_respuesta_1_10[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 1 respuesta 11
+        if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "11"){
+
+            $patients_chatbot_respuesta_1_11[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 1 respuesta 12
+        if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "12"){
+
+            $patients_chatbot_respuesta_1_12[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 2 respuesta 2
+        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "2"){
+
+            $patients_chatbot_respuesta_2_2[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 2 respuesta 3
+        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "3"){
+
+            $patients_chatbot_respuesta_2_3[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 2 respuesta 4
+        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "4"){
+
+            $patients_chatbot_respuesta_2_4[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 2 respuesta 5
+        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "5"){
+
+            $patients_chatbot_respuesta_2_5[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 2 respuesta 6
+        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "6"){
+
+            $patients_chatbot_respuesta_2_6[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 2 respuesta 7
+        /**NO HAY más respuestas
+        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "7"){
+
+            $patients_chatbot_respuesta_2_7[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+        */
+
+        // Respuesta a cuestionario 3 respuesta 1
+        if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "1"){
+
+            $patients_chatbot_respuesta_3_1[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 3 respuesta 2
+        if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "2"){
+
+            $patients_chatbot_respuesta_3_2[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 3 respuesta 3
+        if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "3"){
+
+            $patients_chatbot_respuesta_3_3[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        // Respuesta a cuestionario 3 respuesta 4
+        if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "4"){
+
+            $patients_chatbot_respuesta_3_4[] = $patients_chatbot_object -> getRespuesta();
+            
+        } // end if
+
+        //Obtenemos el resto de los datos
+        $patients_chatbot_id[] = $patients_chatbot_object -> getId();
+        $patients_chatbo_userId[] = $patients_chatbot_object -> getUserId();
+        $patients_chatbo_cuestionario[] = $patients_chatbot_object -> getCuestionario();
+        $patients_chatbot_id_patient[] = $patients_chatbot_object -> getId_patient();
+        $patients_chatbot_create_ts[] = $patients_chatbot_object -> getCreateTs();
+
+    } //end for
 ?>
