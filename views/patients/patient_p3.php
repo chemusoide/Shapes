@@ -1281,7 +1281,7 @@
                                             <?php
                                             break;
                                         
-                                        case ($num_patients_barthel >= 3):
+                                        case ($num_patients_chatbot >= 3):
                                             ?>
 
                                             <div class="table-responsive">
@@ -1636,7 +1636,7 @@
                                             <?php
                                             break;
                                         
-                                        case ($num_patients_barthel >= 3):
+                                        case ($num_patients_chatbot >= 3):
                                             ?>
 
                                             <div class="table-responsive">
