@@ -692,7 +692,7 @@
                                                     <?php
                                                     break;
 
-                                                case ($num_patients_barthel >= 3):
+                                                case ($num_patients_ecfs >= 3):
                                                     ?>
                                                     <div class="table-responsive">
                                                         <table class="table table-bordered"  width="100%" cellspacing="0">
@@ -912,7 +912,7 @@
                                                     <?php
                                                     break;
 
-                                                case ($num_patients_barthel >= 3):
+                                                case ($num_patients_gijon >= 3):
                                                     ?>
                                                     <div class="table-responsive">
                                                         <table class="table table-bordered"  width="100%" cellspacing="0">
