@@ -5,10 +5,12 @@
         include_once(DAO_DIR . "/patients_chatbot/Patients_chatbotDAO.php");
 		include_once(DAO_DIR . "/patients/PatientsDAO.php");
 		include_once(DAO_DIR . "/patients_devices/Patients_devicesDAO.php");
+		include_once(DAO_DIR . "/patients_data/Patients_dataDAO.php");
 
     	$chatbotDAO = new Patients_chatbotDAO();
 		$patientsDAO = new PatientsDAO();
 		$patients_devicesDAO = new Patients_devicesDAO();
+		$patients_dataDAO = new Patients_dataDAO();
 
 		    	
         // Resto de opciones
@@ -39,7 +41,7 @@
 
 					$alarm_edema = $patientsDAO -> getAlarm_edema();
 
-					$patients_devices = $patients_devicesDAO -> getAllWeightRegister();
+					$patients_data = $patients_dataDAO -> getAllWeightRegister();
 					$all_patients = $patientsDAO -> getAllregisters();
 
 	                require_once(VIEWS_DIR . "/chatbot/chatbot_panel.php");

@@ -4,6 +4,7 @@
             
         include_once(DAO_DIR . "/patients/PatientsDAO.php");
         include_once(DAO_DIR . "/patients_historics/Patients_historicsDAO.php");
+        include_once(DAO_DIR . "/patients_data/Patients_dataDAO.php");
         include_once(DAO_DIR . "/patients_devices/Patients_devicesDAO.php");
         include_once(DAO_DIR . "/patients_ecfs/Patients_ecfsDAO.php");
         include_once(DAO_DIR . "/patients_medicines/Patients_medicinesDAO.php");
@@ -16,6 +17,7 @@
 
         $patientsDAO = new PatientsDAO();
         $patien_historicsDAO = new Patients_historicsDAO();
+        $patients_dataDAO = new Patients_dataDAO();
         $patients_devicesDAO = new Patients_devicesDAO();
         $patients_ecfsDAO = new Patients_ecfsDAO();
         $patients_medicinesDAO = new Patients_medicinesDAO();
@@ -40,7 +42,8 @@
                 case "query_p1":
                     $patients = $patientsDAO -> getRegister($_GET["id"]);
                     $patients_historics = $patien_historicsDAO -> getRegistersForPatient($_GET["id"]);
-                    $patients_devices = $patients_devicesDAO -> getAllregistersForPatient($_GET["id"]);
+                    //$patients_devices = $patients_devicesDAO -> getAllregistersForPatient($_GET["id"]);
+                    $patients_data = $patients_dataDAO -> getAllregistersForPatient($_GET["id"]);
                     require_once(VIEWS_DIR . "/patients/patient_p1.php");
                     break;
                 
@@ -64,7 +67,8 @@
                     $patients = $patientsDAO -> getRegister($_GET["id"]);
                     $patients_historics = $patients_historicsDAO -> getRegistersForPatient($_GET["id"]);
 
-                    $patients_devices = $patients_devicesDAO -> getAllregistersForPatient($_GET["id"]);
+                    //$patients_devices = $patients_devicesDAO -> getAllregistersForPatient($_GET["id"]);
+                    $patients_data = $patients_dataDAO -> getAllregistersForPatient($_GET["id"]);
                     $patients_lab_analytics = $patients_lab_analyticsDAO -> getAllregistersForPatient($_GET["id"]);
 
                     $patients_barthel = $patients_barthelDAO -> getAllregistersForPatient($_GET["id"]);
@@ -79,7 +83,8 @@
                     
                     // Sobre la el resto de tablas se añadirá una línea al registro de la base de datos
                     $reg_patients_historics = new Patients_historicsData();
-                    $reg_patients_devices = new Patients_devicesData();
+                    //$reg_patients_devices = new Patients_devicesData();
+                    $reg_patients_data = new Patients_dataData();
                 
                     $reg_patients_lab_analytics_U = new Patients_lab_analyticsData();
                     $reg_patients_lab_analytics_C = new Patients_lab_analyticsData();
@@ -97,9 +102,9 @@
                     $reg_patients -> setOlderPersonBirth ($_POST["older_person_birth"]);
                     $reg_patients -> setOlderPersonSex ($_POST["older_person_sex"]);
 
-                    $reg_patients_devices -> setIdPatient ($_POST["id_patient"]);
-                    $reg_patients_devices -> setDeviceType ("W");
-                    $reg_patients_devices -> setDeviceValue ($_POST["weight"]);
+                    $reg_patients_data -> setIdPatient ($_POST["id_patient"]);
+                    $reg_patients_data -> setMetric ("body_weight");
+                    $reg_patients_data -> setDeviceValue ($_POST["weight"]);
                 
                     $reg_patients_historics -> setIdPatient($_POST["id_patient"]);
                     $reg_patients_historics -> setHeight($_POST["height"]);
@@ -140,7 +145,8 @@
                     
 	                $patientsDAO -> alterReg($reg_patients); // Modificamos última línea
                     $patien_historicsDAO -> addReg($reg_patients_historics); // Añadimos una línea
-                    $patients_devicesDAO -> addReg($reg_patients_devices); // Añadimos una línea
+                    //$patients_devicesDAO -> addReg($reg_patients_devices); // Añadimos una línea
+                    $patients_dataDAO -> addReg($reg_patients_data); // Añadimos una línea
 
                     $patients_lab_analyticsDAO -> addReg($reg_patients_lab_analytics_U);
                     $patients_lab_analyticsDAO -> addReg($reg_patients_lab_analytics_C);

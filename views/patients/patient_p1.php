@@ -51,17 +51,17 @@
                                 <div class="card-body">
                                    <?php 
                                     
-                                    $num_patients_devices = count($patients_devices);
+                                    $num_patients_data = count($patients_data);
 
                                     // Recorremos el listado y seleccionamos de todos los datos del tipo
                                     // peso y los ponemos en un array, como el array está ordenado por fecha
                                     // el primer peso (que será la última medida)
                                 
-                                   for ($i = 0; $i < $num_patients_devices; $i++) {
+                                   for ($i = 0; $i < $num_patients_data; $i++) {
                                             
-                                        $tmp = (object)$patients_devices[$i];
+                                        $tmp = (object)$patients_data[$i];
                                         // miramos si el tipo de dato es un peso
-                                        if ( $tmp -> getDeviceType() == "W"){
+                                        if ( $tmp -> getMetric() == "body_weight"){
 
                                             // Metemos el valor en un array
                                             $weigh[] = $tmp -> getDeviceValue();
@@ -493,9 +493,9 @@
                                 <div class="card-body">
                                     
                                     <?php 
-                                    if ( $patients_historics[0] -> getStopWalking() == 0){
+                                    if ( $patients_historics -> getStopWalking() == 0){
                                         $stop_walking = "NO";
-                                    }elseif ($patients_historics[0] -> getStopWalking() == 1){
+                                    }elseif ($patients_historics -> getStopWalking() == 1){
                                         $stop_walking = "YES";
                                     }else {
                                         $stop_walking = "Input Data Error";
