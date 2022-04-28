@@ -12,11 +12,10 @@
         include_once(DAO_DIR . "/patients_barthel/Patients_barthelDAO.php");
         include_once(DAO_DIR . "/patients_ecfs/Patients_ecfsDAO.php");
         include_once(DAO_DIR . "/patients_gijon/Patients_gijonDAO.php");
-        include_once(DAO_DIR . "/patients_historics/Patients_historicsDAO.php");
         include_once(DAO_DIR . "/patients_chatbot/Patients_chatbotDAO.php");
 
         $patientsDAO = new PatientsDAO();
-        $patien_historicsDAO = new Patients_historicsDAO();
+        $patients_historicsDAO = new Patients_historicsDAO();
         $patients_dataDAO = new Patients_dataDAO();
         $patients_devicesDAO = new Patients_devicesDAO();
         $patients_ecfsDAO = new Patients_ecfsDAO();
@@ -25,7 +24,6 @@
         $patients_barthelDAO = new Patients_barthelDAO();
         $patients_ecfsDAO = new Patients_ecfsDAO();
         $patients_gijonDAO = new Patients_gijonDAO();
-        $patients_historicsDAO = new Patients_historicsDAO();
         $patients_chatbotDAO  = new Patients_chatbotDAO();
 
                         
@@ -41,7 +39,9 @@
 
                 case "query_p1":
                     $patients = $patientsDAO -> getRegister($_GET["id"]);
-                    $patients_historics = $patien_historicsDAO -> getRegistersForPatient($_GET["id"]);
+                    
+                    $patients_historics = $patients_historicsDAO -> getRegistersForPatient($_GET["id"]); //Recogemos los valores del úlitmo registro
+                    //$patients_historics_all = $patients_historicsDAO ->getAllRegistersForPatient($_GET["id"]); //Recogemos todos los valores.
                     //$patients_devices = $patients_devicesDAO -> getAllregistersForPatient($_GET["id"]);
                     $patients_data = $patients_dataDAO -> getAllregistersForPatient($_GET["id"]);
                     require_once(VIEWS_DIR . "/patients/patient_p1.php");
