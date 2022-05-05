@@ -249,7 +249,7 @@
         
         // Respuesta a cuestionario 1 respuesta 4
         if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "4"){
-
+                                        
             $patients_chatbot_respuesta_1_4[] = $patients_chatbot_object -> getRespuesta();
             
         } // end if
@@ -311,35 +311,35 @@
         } // end if
 
         // Respuesta a cuestionario 2 respuesta 2
-        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "2"){
+        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "17"){
 
             $patients_chatbot_respuesta_2_2[] = $patients_chatbot_object -> getRespuesta();
             
         } // end if
 
         // Respuesta a cuestionario 2 respuesta 3
-        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "3"){
+        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "18"){
 
             $patients_chatbot_respuesta_2_3[] = $patients_chatbot_object -> getRespuesta();
             
         } // end if
 
         // Respuesta a cuestionario 2 respuesta 4
-        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "4"){
+        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "19"){
 
             $patients_chatbot_respuesta_2_4[] = $patients_chatbot_object -> getRespuesta();
             
         } // end if
 
         // Respuesta a cuestionario 2 respuesta 5
-        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "5"){
+        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "20"){
 
             $patients_chatbot_respuesta_2_5[] = $patients_chatbot_object -> getRespuesta();
             
         } // end if
 
         // Respuesta a cuestionario 2 respuesta 6
-        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "6"){
+        if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "21"){
 
             $patients_chatbot_respuesta_2_6[] = $patients_chatbot_object -> getRespuesta();
             
@@ -355,28 +355,28 @@
         */
 
         // Respuesta a cuestionario 3 respuesta 1
-        if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "1"){
+        if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "22"){
 
             $patients_chatbot_respuesta_3_1[] = $patients_chatbot_object -> getRespuesta();
             
         } // end if
 
         // Respuesta a cuestionario 3 respuesta 2
-        if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "2"){
+        if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "23"){
 
             $patients_chatbot_respuesta_3_2[] = $patients_chatbot_object -> getRespuesta();
             
         } // end if
 
         // Respuesta a cuestionario 3 respuesta 3
-        if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "3"){
+        if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "24"){
 
             $patients_chatbot_respuesta_3_3[] = $patients_chatbot_object -> getRespuesta();
             
         } // end if
 
         // Respuesta a cuestionario 3 respuesta 4
-        if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "4"){
+        if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "25"){
 
             $patients_chatbot_respuesta_3_4[] = $patients_chatbot_object -> getRespuesta();
             

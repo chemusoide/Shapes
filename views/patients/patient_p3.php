@@ -22,6 +22,9 @@
         
         require_once("patient_functions.php");
 
+        //echo "<h1>NUM PATIENTS CHATBOT: $num_patients_chatbot</h1>";
+        //var_dump($patients_chatbot);
+
 ?>
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -1000,7 +1003,7 @@
                                     CHATBOT 1
                                 </div>
                                 
-                                <div class="card-body">
+                                <div class="card-body">                            
                                 <?php
 
                                     switch ($num_patients_chatbot){

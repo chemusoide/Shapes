@@ -7,7 +7,7 @@ class Patients_chatbotData {
     private $user_id;
     private $id_patient;
     private $cuestionario;
-    private $id_cuestionario;
+    private $idcuestionario;
     private $pregunta;
     private $respuesta;
     private $create_ts;
@@ -45,11 +45,11 @@ class Patients_chatbotData {
     }
 
     public function getId_cuestionario() {
-        return $this -> id_cuestionario;
+        return $this -> idcuestionario;
     }
 
-    public function setId_cuestionario($id_cuestionario) {
-        return $this -> id_cuestionario = $id_cuestionario;
+    public function setId_cuestionario($idcuestionario) {
+        return $this -> idcuestionario = $idcuestionario;
     }
 
     public function getPregunta() {
