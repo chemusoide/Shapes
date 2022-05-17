@@ -9,6 +9,7 @@ class PatientsData {
     private $education_contact_person;
     private $older_person_birth;
     private $older_person_sex;
+    private $initial_weight;
     private $create_ts;
     private $update_ts;
 
@@ -66,6 +67,14 @@ class PatientsData {
 
     public function setOlderPersonSex($older_person_sex) {
         return $this -> older_person_sex = $older_person_sex;
+    }
+
+    public function getInitialWeight() {
+        return $this -> initial_weight;
+    }
+
+    public function setInitialWeight($initial_weight) {
+        return $this -> initial_weight = $initial_weight;
     }
 
     public function getCreateTs() {

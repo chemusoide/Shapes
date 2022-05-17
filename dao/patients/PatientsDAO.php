@@ -33,6 +33,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -99,6 +100,7 @@
                 $patientsData->setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData->setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData->setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData->setCreateTs($rs->fields["create_ts"]);
                 $patientsData->setUpdateTs($rs->fields["update_ts"]);
 
@@ -146,6 +148,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -196,6 +199,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -244,6 +248,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -292,6 +297,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -338,6 +344,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -384,6 +391,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -430,6 +438,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -476,6 +485,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -522,6 +532,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -568,6 +579,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -614,6 +626,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -660,6 +673,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -706,6 +720,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -752,6 +767,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
@@ -798,6 +814,7 @@
                 $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
                 $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
                 $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
                 $patientsData -> setCreateTs($rs->fields["create_ts"]);
                 $patientsData -> setUpdateTs($rs->fields["update_ts"]);
 
