@@ -29,10 +29,18 @@
 
         if ( isset($patients_historics) ) {
 
+
+            //var_dump($patients_historics);
             if ($patients_historics -> getHeight() != NULL){
                 $height = $patients_historics -> getHeight();
             }else{
                 $height = "No Data";
+            } // End if
+
+            if ($patients -> getInitialWeight() != NULL){
+                $initial_weight = $patients -> getInitialWeight();
+            }else{
+                $initial_weight = "No Data";
             } // End if
 
             if ($patients_historics -> getLeftVentricularEjectionFraction() != NULL){
@@ -328,6 +336,16 @@
                                 </div>
                                 <div class="card-body">
                                     <?php echo $height ?> cm
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">    
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    INITIAL WEIGH
+                                </div>
+                                <div class="card-body">
+                                    <?php echo $initial_weight ?> Kg
                                 </div>
                             </div>
                         </div>

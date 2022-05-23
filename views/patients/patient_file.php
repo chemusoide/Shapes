@@ -96,7 +96,7 @@
                                 </div>
                             </div>
 
-                            <? var_dump($patients_devices_w);?>
+                            <? //var_dump($patients_devices_w);?>
                             <div class="form-group">
                                 <label for="weight">Weight (Kg)</label>
                                 <input class="form-control" type="text" placeholder="Kg" name="weight" id="weight" value = "<?php echo $last_weigh; ?>">
