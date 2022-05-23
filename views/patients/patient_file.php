@@ -98,8 +98,9 @@
 
                             <? //var_dump($patients_devices_w);?>
                             <div class="form-group">
-                                <label for="weight">Weight (Kg)</label>
-                                <input class="form-control" type="text" placeholder="Kg" name="weight" id="weight" value = "<?php echo $last_weigh; ?>">
+                                <label>Current weight <?php echo $last_weigh; ?>kg</label><br>
+                                <label for="weight">Initial Weight (Kg) </label>
+                                <input class="form-control" type="text" placeholder="Kg" name="weight" id="weight" value = "<?php if ( isset($patients) ) { echo $patients -> getInitialWeight();} ?>">
                             </div>
 
                             <div class="form-group">
