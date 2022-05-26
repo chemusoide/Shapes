@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 <label>Current weight <?php echo $last_weigh; ?>kg</label><br>
                                 <label for="weight">Initial Weight (Kg) </label>
-                                <input class="form-control" type="text" placeholder="Kg" name="weight" id="weight" value = "<?php if ( isset($patients) ) { echo $patients -> getInitialWeight();} ?>">
+                                <input class="form-control" type="text" placeholder="Kg" name="initial_weight" id="initial_weight" value = "<?php if ( isset($patients) ) { echo $patients -> getInitialWeight();} ?>">
                             </div>
 
                             <div class="form-group">

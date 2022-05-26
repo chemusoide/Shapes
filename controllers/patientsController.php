@@ -80,12 +80,11 @@
                 case "modify":
                     // Sobre la tabla pacientes se modificará el registro de la base de datos
                     $reg_patients = new PatientsData();
-                    
                     // Sobre la el resto de tablas se añadirá una línea al registro de la base de datos
                     $reg_patients_historics = new Patients_historicsData();
                     //$reg_patients_devices = new Patients_devicesData();
-                    $reg_patients_data = new Patients_dataData();
-                
+                    //$reg_patients_data = new Patients_dataData();
+
                     $reg_patients_lab_analytics_U = new Patients_lab_analyticsData();
                     $reg_patients_lab_analytics_C = new Patients_lab_analyticsData();
                     $reg_patients_lab_analytics_S = new Patients_lab_analyticsData();
@@ -101,11 +100,8 @@
                     $reg_patients -> setId($_POST["id_patient"]);
                     $reg_patients -> setOlderPersonBirth ($_POST["older_person_birth"]);
                     $reg_patients -> setOlderPersonSex ($_POST["older_person_sex"]);
+                    $reg_patients -> setInitialWeight ($_POST["initial_weight"]);
 
-                    $reg_patients_data -> setIdPatient ($_POST["id_patient"]);
-                    $reg_patients_data -> setMetric ("body_weight");
-                    $reg_patients_data -> setDeviceValue ($_POST["weight"]);
-                
                     $reg_patients_historics -> setIdPatient($_POST["id_patient"]);
                     $reg_patients_historics -> setHeight($_POST["height"]);
                     $reg_patients_historics -> setSmokingStatus($_POST["smoking"]);
@@ -142,11 +138,12 @@
                     $reg_patients_gijon -> setIdPatient($_POST["id_patient"]);
                     $reg_patients_gijon -> setScore($_POST["gijon"]);
 
-                    
 	                $patientsDAO -> alterReg($reg_patients); // Modificamos última línea
-                    $patien_historicsDAO -> addReg($reg_patients_historics); // Añadimos una línea
+                    //var_dump($reg_patients_historics);
+                    $patients_historicsDAO -> addReg($reg_patients_historics); // Añadimos una línea
+
                     //$patients_devicesDAO -> addReg($reg_patients_devices); // Añadimos una línea
-                    $patients_dataDAO -> addReg($reg_patients_data); // Añadimos una línea
+                    //$patients_dataDAO -> addReg($reg_patients_data); // Añadimos una línea
 
                     $patients_lab_analyticsDAO -> addReg($reg_patients_lab_analytics_U);
                     $patients_lab_analyticsDAO -> addReg($reg_patients_lab_analytics_C);

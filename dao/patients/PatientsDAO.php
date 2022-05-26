@@ -846,13 +846,15 @@
             				patients 
             			SET 
                             older_person_birth = ?,
-                            older_person_sex = ?
+                            older_person_sex = ?,
+                            initial_weight = ?
             				
             			WHERE 
             				id = ? ",
                 array(
                         $reg -> getOlderPersonBirth(),
                 		$reg -> getOlderPersonSex(),
+                        $reg -> getInitialWeight(),
                         $reg -> getId()
             	)
             );

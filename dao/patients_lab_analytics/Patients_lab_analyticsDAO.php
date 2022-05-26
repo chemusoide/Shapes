@@ -177,7 +177,7 @@
                 
             GeneralDAO::closeConnection($db);
 
-        } // End function alterReg
+        } // End function addReg
 
          /**
          * 

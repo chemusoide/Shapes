@@ -244,7 +244,8 @@
                             id_patient = ?,
                             height = ?,
                             smoking_status = ?,
-                            heart_disease_type = ?
+                            heart_disease_type = ?,
+                            non_hf = ?
             				
             			WHERE 
             				id = ? ",
@@ -252,7 +253,10 @@
                         $reg -> getIdPatient(),
                         $reg -> getHeight(),
                 		$reg -> getSmokingStatus(),
-                        $reg -> getHeartDiseaseType()
+                        $reg -> getHeartDiseaseType(),
+                        $reg -> getNonHf(),
+
+                        $reg -> getId()
             	)
             );
             
@@ -263,6 +267,7 @@
         } // End function alterReg
 
         public function addReg(Patients_historicsData $reg) {
+            echo "HOLA";
 
             $db = GeneralDAO::getConnection();
             
@@ -278,7 +283,8 @@
                         height,
                         smoking_status,
                         heart_disease_type,
-                        non_hf)
+                        non_hf
+                        )
 
                     VALUES (?, ?, ?, ?, ?)",
 
@@ -294,7 +300,7 @@
             $db->Execute( "COMMIT" );
                 
             GeneralDAO::closeConnection($db);
-        }
+        } // End function addreg
 
 
     } // End Class
