@@ -23,6 +23,7 @@
         require_once(SKEL_DIR . "/contentWrapper.php");
         
         require_once("patient_blocks.php");
+        //require_once("patient_functions.php");
 
         $action = "index.php?controller=patients&amp;";
         if ( isset($patients) ) {
@@ -169,21 +170,121 @@
                                 <input class="form-control" type="text" name="haemoglobin" placeholder="haemoglobin" id="haemoglobin" value = "<?php echo $h[0]; ?>">
                             </div>
 
-                            <?php $non_hf_value = $patients_historics -> getNonHf(); ?>
+                            <?php
+                            $non_hf_periherla_vd_value = $patients_historics -> getNonHfPeriherlaVd();
+                            $non_hf_cerebral_vd_value = $patients_historics -> getNonHfCerebralVd();
+                            $non_hf_COPD_value = $patients_historics -> getNonHfCOPD();
+                            $non_hf_supplemental_oxygen_value = $patients_historics -> getNonHfSupplementalOxygen();
+                            $non_hf_diabetes_melitus_value =$patients_historics -> getNonHfDiabetesMelitus();
+                            $non_hf_chronic_renal_value = $patients_historics -> getNonHfChronicRenal();
+                            ?>
+
                             <div class="form-group">
-                                <label for="non_hf">Non HF</label>
-                                <select class="form-control" name="non_hf" id="non_hf">
-                                    <option <?php if ($non_hf_value == "A"){echo "selected=\"selected\"";}?> value="A">Peripheral VD</option>
-                                    <option <?php if ($non_hf_value == "B"){echo "selected=\"selected\"";}?> value="B">Cereblar VD</option>
-                                    <option <?php if ($non_hf_value == "C"){echo "selected=\"selected\"";}?> value="C">COPD</option>
-                                    <option <?php if ($non_hf_value == "D"){echo "selected=\"selected\"";}?>value="D">Diabetes Mellitus</option>
-                                    <option <?php if ($non_hf_value == "E"){echo "selected=\"selected\"";}?>value="E">Cancer</option>
-                                    <option <?php if ($non_hf_value == "F"){echo "selected=\"selected\"";}?>value="F">Neurodegenerative disease</option>
-                                    <option <?php if ($non_hf_value == "G"){echo "selected=\"selected\"";}?>value="G">Supplemental oxygen</option>
-                                    <option <?php if ($non_hf_value == "H"){echo "selected=\"selected\"";}?>value="H">Chronic kidney</option>
-                                    <option <?php if ($non_hf_value == "I"){echo "selected=\"selected\"";}?>value="I">Heart attack</option>
-                                    <option <?php if ($non_hf_value == "J"){echo "selected=\"selected\"";}?>value="J">Hypertension</option>
-                                </select>
+                                <label for="non_hf_periherla_vd_value">Periherla VD</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="non_hf_periherla_vd" id="periherla_vd1" value="0" <?php  if ( $non_hf_periherla_vd_value == "0") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="periherla_vd1">
+                                        NO
+                                    </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="non_hf_periherla_vd" id="periherla_vd2" value="1" <?php  if ( $non_hf_periherla_vd_value == "1") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="periherla_vd2">
+                                        YES
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="non_hf_cerebral_vd_value">Cerebral VD</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="non_hf_cerebral_vd" id="cerebral_vd1" value="0" <?php  if ( $non_hf_cerebral_vd_value == "0") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="cerebral_vd1">
+                                        NO
+                                    </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="non_hf_cerebral_vd" id="cerebral_vd2" value="1" <?php  if ( $non_hf_cerebral_vd_value == "1") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="cerebral_vd2">
+                                        YES
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="non_hf_COPD_value">COPD</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="non_hf_COPD" id="copd1" value="0" <?php  if ( $non_hf_COPD_value == "0") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="copd1">
+                                        NO
+                                    </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="non_hf_COPD" id="copd2" value="1" <?php  if ( $non_hf_COPD_value == "1") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="copd2">
+                                        YES
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="non_hf_supplemental_oxygen_value">Supplemental Oxygen</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="non_hf_supplemental_oxygen" id="oxygen1" value="0" <?php  if ( $non_hf_supplemental_oxygen_value == "0") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="oxygen1">
+                                        NO
+                                    </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="non_hf_supplemental_oxygen" id="oxygen2" value="1" <?php  if ( $non_hf_supplemental_oxygen_value == "1") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="oxygen2">
+                                        YES
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="non_hf_diabetes_melitus_value">Diabetes Melitus</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="non_hf_diabetes_melitus" id="diabetes1" value="0" <?php  if ( $non_hf_diabetes_melitus_value == "0") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="diabetes1">
+                                        NO
+                                    </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="non_hf_diabetes_melitus" id="diabetes2" value="1" <?php  if ( $non_hf_diabetes_melitus_value == "1") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="diabetes2">
+                                        YES
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="non_hf_chronic_renal_value">Renal Value</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="non_hf_chronic_renal" id="renal1" value="0" <?php  if ( $non_hf_chronic_renal_value == "0") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="renal1">
+                                        NO
+                                    </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="non_hf_chronic_renal" id="renal2" value="1" <?php  if ( $non_hf_chronic_renal_value == "1") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="renal2">
+                                        YES
+                                    </label>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group">

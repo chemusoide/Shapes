@@ -106,7 +106,12 @@
                     $reg_patients_historics -> setHeight($_POST["height"]);
                     $reg_patients_historics -> setSmokingStatus($_POST["smoking"]);
                     $reg_patients_historics -> setHeartDiseaseType($_POST["heart_disease"]);
-                    $reg_patients_historics -> setNonHf($_POST["non_hf"]);
+                    $reg_patients_historics -> setNonHfPeriherlaVd($_POST["non_hf_periherla_vd"]);
+                    $reg_patients_historics -> setNonHfCerebralVd($_POST["non_hf_cerebral_vd"]);
+                    $reg_patients_historics -> setNonHfCOPD($_POST["non_hf_COPD"]);
+                    $reg_patients_historics -> setNonHfSupplementalOxygen($_POST["non_hf_supplemental_oxygen"]);
+                    $reg_patients_historics -> setNonHfDiabetesMelitus($_POST["non_hf_diabetes_melitus"]);
+                    $reg_patients_historics -> setNonHfChronicRenal($_POST["non_hf_chronic_renal"]);
                     
                     $reg_patients_lab_analytics_U -> setIdPatient($_POST["id_patient"]);
                     $reg_patients_lab_analytics_U -> setLabParam ("U");

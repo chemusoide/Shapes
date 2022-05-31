@@ -100,4 +100,26 @@
 
     }// End function
 
+    // Función que coge un valor de nonhf y devuelve si es YES, NO o NA.
+    function nonhfvalue ($invalue){
+
+        switch ($invalue){
+
+            case "0":
+                $outvalue = "NO";
+                break;
+
+            case "1":
+                $outvalue = "YES";
+                break;
+
+            default:
+                $outvalue = "NA";
+
+        } // End Switch
+
+        return $outvalue;
+
+    } // End function nonhfvalue
+
 ?>

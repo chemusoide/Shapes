@@ -17,6 +17,8 @@
         
         require_once(SKEL_DIR . "/contentWrapper.php");
 
+        require_once("patient_functions.php");
+
         $num_patients_historics = count($patients_historics);
 
         //var_dump ($patients_historics);
@@ -177,54 +179,13 @@
 
             $year_with_hf = date('Y') - $diagnostic_hf_year;
 
-            $non_hf = $patients_historics -> getNonHf();
 
-            switch ($non_hf){
-
-                case "A":
-                    $non_hf_value = "Peripheral vascular disease (PVD)";
-                    break;
-
-                case "B":
-                    $non_hf_value = "Cerebral vascular disease (both ischemia and hemorrhage)";
-                    break;
-                
-                case "C":
-                    $non_hf_value = "COPD";
-                    break;
-
-                case "D":
-                    $non_hf_value = "Diabetes Mellitus";
-                    break;
-
-                case "E":
-                    $non_hf_value = "Cancer";
-                    break;
-
-                case "F":
-                    $non_hf_value = "Neurodegenerative disease";
-                    break;
-
-                case "G":
-                    $non_hf_value = "Supplemental oxygen";
-                    break;
-
-                case "H":
-                    $non_hf_value = "Chronic kidney disease";
-                    break;
-
-                case "I":
-                    $non_hf_value = "Heart attack";
-                    break;
-
-                case "J":
-                    $non_hf_value = "Hypertension";
-                    break;
-
-                default:
-                    $non_hf_value = "Input Data Error";
-
-            } // End Switch
+            $non_hf_periherla_vd = nonhfvalue($patients_historics -> getNonHfPeriherlaVd());
+            $non_hf_cerebral_vd = nonhfvalue($patients_historics -> getNonHfCerebralVd());
+            $non_hf_COPD = nonhfvalue($patients_historics -> getNonHfCOPD());
+            $non_hf_supplemental_oxygen = nonhfvalue($patients_historics -> getNonHfSupplementalOxygen());
+            $non_hf_diabetes_melitus = nonhfvalue($patients_historics -> getNonHfDiabetesMelitus());
+            $non_hf_chronic_renal = nonhfvalue($patients_historics -> getNonHfChronicRenal());
 
             if ($patients_historics -> getNonHfYear() != NULL){
                 $date_non_hf = $patients_historics -> getNonHfYear();
@@ -480,10 +441,65 @@
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    LIST OF RELEVANT, NON HF, MEDICAL CONDITIONS
+                                    NON HF, PERIHERLA VD
                                 </div>
                                 <div class="card-body">
-                                    <?php echo $non_hf_value;?>
+                                    <?php echo $non_hf_periherla_vd;?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    NON HF, CEREBRAL VD
+                                </div>
+                                <div class="card-body">
+                                    <?php echo $non_hf_cerebral_vd;?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    NON HF, COPD
+                                </div>
+                                <div class="card-body">
+                                    <?php echo $non_hf_COPD;?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    NON HF, SUPPLEMENTAL OXYGEN
+                                </div>
+                                <div class="card-body">
+                                    <?php echo $non_hf_supplemental_oxygen;?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    NON HF, DIABETES MELITUS
+                                </div>
+                                <div class="card-body">
+                                    <?php echo $non_hf_diabetes_melitus;?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    NON HF, CHRONIC RENAL
+                                </div>
+                                <div class="card-body">
+                                    <?php echo $non_hf_chronic_renal;?>
                                 </div>
                             </div>
                         </div>

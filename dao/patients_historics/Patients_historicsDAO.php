@@ -48,6 +48,12 @@
                 $patients_historicsData -> setHfStageStructuralAnomaly($rs -> fields["hf_stage_structural_anomaly"]);
                 $patients_historicsData -> setHfStageStructuralAnomalyDate($rs -> fields["hf_stage_structural_anomaly_date"]);
                 $patients_historicsData -> setNonHf($rs -> fields["non_hf"]);
+                $patients_historicsData -> setNonHfPeriherlaVd($rs -> fields["non_hf_periherla_vd"]);
+                $patients_historicsData -> setNonHfCerebralVd($rs -> fields["non_hf_cerebral_vd"]);
+                $patients_historicsData -> setNonHfCOPD($rs -> fields["non_hf_COPD"]);
+                $patients_historicsData -> setNonHfSupplementalOxygen($rs -> fields["non_hf_supplemental_oxygen"]);
+                $patients_historicsData -> setNonHfDiabetesMelitus($rs -> fields["non_hf_diabetes_melitus"]);
+                $patients_historicsData -> setNonHfChronicRenal($rs -> fields["non_hf_chronic_renal"]);
                 $patients_historicsData -> setNonHfYear($rs -> fields["non_hf_year"]);
                 $patients_historicsData -> setMedicalConditionsOther($rs -> fields["medical_conditions_other"]);
                 $patients_historicsData -> setMedicalConditionsNumber($rs -> fields["medical_conditions_number"]);
@@ -101,6 +107,12 @@
                 $patients_historicsData -> setHfStageStructuralAnomaly($rs -> fields["hf_stage_structural_anomaly"]);
                 $patients_historicsData -> setHfStageStructuralAnomalyDate($rs -> fields["hf_stage_structural_anomaly_date"]);
                 $patients_historicsData -> setNonHf($rs -> fields["non_hf"]);
+                $patients_historicsData -> setNonHfPeriherlaVd($rs -> fields["non_hf_periherla_vd"]);
+                $patients_historicsData -> setNonHfCerebralVd($rs -> fields["non_hf_cerebral_vd"]);
+                $patients_historicsData -> setNonHfCOPD($rs -> fields["non_hf_COPD"]);
+                $patients_historicsData -> setNonHfSupplementalOxygen($rs -> fields["non_hf_supplemental_oxygen"]);
+                $patients_historicsData -> setNonHfDiabetesMelitus($rs -> fields["non_hf_diabetes_melitus"]);
+                $patients_historicsData -> setNonHfChronicRenal($rs -> fields["non_hf_chronic_renal"]);
                 $patients_historicsData -> setNonHfYear($rs -> fields["non_hf_year"]);
                 $patients_historicsData -> setMedicalConditionsOther($rs -> fields["medical_conditions_other"]);
                 $patients_historicsData -> setMedicalConditionsNumber($rs -> fields["medical_conditions_number"]);
@@ -153,6 +165,12 @@
                 $patients_historicsData -> setHfStageStructuralAnomaly($rs -> fields["hf_stage_structural_anomaly"]);
                 $patients_historicsData -> setHfStageStructuralAnomalyDate($rs -> fields["hf_stage_structural_anomaly_date"]);
                 $patients_historicsData -> setNonHf($rs -> fields["non_hf"]);
+                $patients_historicsData -> setNonHfPeriherlaVd($rs -> fields["non_hf_periherla_vd"]);
+                $patients_historicsData -> setNonHfCerebralVd($rs -> fields["non_hf_cerebral_vd"]);
+                $patients_historicsData -> setNonHfCOPD($rs -> fields["non_hf_COPD"]);
+                $patients_historicsData -> setNonHfSupplementalOxygen($rs -> fields["non_hf_supplemental_oxygen"]);
+                $patients_historicsData -> setNonHfDiabetesMelitus($rs -> fields["non_hf_diabetes_melitus"]);
+                $patients_historicsData -> setNonHfChronicRenal($rs -> fields["non_hf_chronic_renal"]);
                 $patients_historicsData -> setNonHfYear($rs -> fields["non_hf_year"]);
                 $patients_historicsData -> setMedicalConditionsOther($rs -> fields["medical_conditions_other"]);
                 $patients_historicsData -> setMedicalConditionsNumber($rs -> fields["medical_conditions_number"]);
@@ -208,6 +226,12 @@
                 $patients_historicsData -> setHfStageStructuralAnomaly($rs -> fields["hf_stage_structural_anomaly"]);
                 $patients_historicsData -> setHfStageStructuralAnomalyDate($rs -> fields["hf_stage_structural_anomaly_date"]);
                 $patients_historicsData -> setNonHf($rs -> fields["non_hf"]);
+                $patients_historicsData -> setNonHfPeriherlaVd($rs -> fields["non_hf_periherla_vd"]);
+                $patients_historicsData -> setNonHfCerebralVd($rs -> fields["non_hf_cerebral_vd"]);
+                $patients_historicsData -> setNonHfCOPD($rs -> fields["non_hf_COPD"]);
+                $patients_historicsData -> setNonHfSupplementalOxygen($rs -> fields["non_hf_supplemental_oxygen"]);
+                $patients_historicsData -> setNonHfDiabetesMelitus($rs -> fields["non_hf_diabetes_melitus"]);
+                $patients_historicsData -> setNonHfChronicRenal($rs -> fields["non_hf_chronic_renal"]);
                 $patients_historicsData -> setNonHfYear($rs -> fields["non_hf_year"]);
                 $patients_historicsData -> setMedicalConditionsOther($rs -> fields["medical_conditions_other"]);
                 $patients_historicsData -> setMedicalConditionsNumber($rs -> fields["medical_conditions_number"]);
@@ -245,7 +269,12 @@
                             height = ?,
                             smoking_status = ?,
                             heart_disease_type = ?,
-                            non_hf = ?
+                            non_hf_periherla_vd = ?,
+                            non_hf_cerebral_vd = ?,
+                            non_hf_COPD = ?,
+                            non_hf_supplemental_oxygen = ?,
+                            non_hf_diabetes_melitus = ?,
+                            non_hf_chronic_renal = ?
             				
             			WHERE 
             				id = ? ",
@@ -254,7 +283,12 @@
                         $reg -> getHeight(),
                 		$reg -> getSmokingStatus(),
                         $reg -> getHeartDiseaseType(),
-                        $reg -> getNonHf(),
+                        $reg -> getNonHfPeriherlaVd(),
+                        $reg -> getNonHfCerebralVd(),
+                        $reg -> getNonHfCOPD(),
+                        $reg -> getNonHfSupplementalOxygen(),
+                        $reg -> getNonHfDiabetesMelitus(),
+                        $reg -> getNonHfChronicRenal(),
 
                         $reg -> getId()
             	)
@@ -283,17 +317,27 @@
                         height,
                         smoking_status,
                         heart_disease_type,
-                        non_hf
+                        non_hf_periherla_vd,
+                        non_hf_cerebral_vd,
+                        non_hf_COPD,
+                        non_hf_supplemental_oxygen,
+                        non_hf_diabetes_melitus,
+                        non_hf_chronic_renal
                         )
 
-                    VALUES (?, ?, ?, ?, ?)",
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 
                 array(
                     $reg -> getIdPatient(),
                     $reg -> getHeight(),
                 	$reg -> getSmokingStatus(),
                     $reg -> getHeartDiseaseType(),
-                    $reg -> getNonHf()
+                    $reg -> getNonHfPeriherlaVd(),
+                    $reg -> getNonHfCerebralVd(),
+                    $reg -> getNonHfCOPD(),
+                    $reg -> getNonHfSupplementalOxygen(),
+                    $reg -> getNonHfDiabetesMelitus(),
+                    $reg -> getNonHfChronicRenal()
                     )
             );
                         

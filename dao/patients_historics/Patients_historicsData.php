@@ -24,6 +24,12 @@ class Patients_historicsData {
     private $hf_stage_structural_anomaly;	
     private $hf_stage_structural_anomaly_date;
     private $non_hf;
+    private $non_hf_periherla_vd;
+    private $non_hf_cerebral_vd;
+    private $non_hf_COPD;
+    private $non_hf_supplemental_oxygen;
+    private $non_hf_diabetes_melitus;
+    private $non_hf_chronic_renal;
     private $non_hf_year;
     private $medical_conditions_other;
     private $medical_conditions_number;
@@ -199,6 +205,54 @@ class Patients_historicsData {
 
     public function setNonHf($non_hf) {
         return $this -> non_hf = $non_hf;
+    }
+
+    public function getNonHfPeriherlaVd() {
+        return $this -> non_hf_periherla_vd;
+    }
+
+    public function setNonHfPeriherlaVd($non_hf_periherla_vd) {
+        return $this -> non_hf_periherla_vd = $non_hf_periherla_vd;
+    }
+
+    public function getNonHfCerebralVd() {
+        return $this -> non_hf_cerebral_vd;
+    }
+
+    public function setNonHfCerebralVd($non_hf_cerebral_vd) {
+        return $this -> non_hf_cerebral_vd = $non_hf_cerebral_vd;
+    }
+
+    public function getNonHfCOPD() {
+        return $this -> non_hf_COPD;
+    }
+
+    public function setNonHfCOPD($non_hf_COPD) {
+        return $this -> non_hf_COPD = $non_hf_COPD;
+    }
+
+    public function getNonHfSupplementalOxygen() {
+        return $this -> non_hf_supplemental_oxygen;
+    }
+
+    public function setNonHfSupplementalOxygen($non_hf_supplemental_oxygen) {
+        return $this -> non_hf_supplemental_oxygen = $non_hf_supplemental_oxygen;
+    }
+
+    public function getNonHfDiabetesMelitus() {
+        return $this -> non_hf_diabetes_melitus;
+    }
+
+    public function setNonHfDiabetesMelitus($non_hf_diabetes_melitus) {
+        return $this -> non_hf_diabetes_melitus = $non_hf_diabetes_melitus;
+    }
+
+    public function getNonHfChronicRenal() {
+        return $this -> non_hf_chronic_renal;
+    }
+
+    public function setNonHfChronicRenal($non_hf_chronic_renal) {
+        return $this -> non_hf_chronic_renal = $non_hf_chronic_renal;
     }
 
     public function getNonHfYear() {
