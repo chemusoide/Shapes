@@ -87,7 +87,7 @@
 
             $result = array();
 
-            $rs = $db->Execute( "SELECT * FROM patients_lab_analytics WHERE id_patient = ? ORDER BY record_date DESC",
+            $rs = $db->Execute( "SELECT * FROM patients_lab_analytics WHERE id_patient = ? ORDER BY create_ts DESC",
             array($id) );
             
             while (!$rs->EOF) {
@@ -123,7 +123,7 @@
 			
             $patients_lab_analyticsData = new Patients_lab_analyticsData();
             
-       		$rs = $db->Execute( "SELECT * FROM patients_lab_analytics WHERE id_patient = ? ORDER BY record_date DESC",
+       		$rs = $db->Execute( "SELECT * FROM patients_lab_analytics WHERE id_patient = ? ORDER BY create_ts DESC",
        		    array($id) );
 
             if (!$rs->EOF) {
