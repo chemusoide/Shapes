@@ -335,7 +335,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="non_hf_chronic_renal_value">Renal Value</label>
+                                <label for="non_hf_chronic_renal_value">Chronic kidney disease</label>
                                 <div class="col-sm-10">
                                     <div class="form-check">
                                     <input class="form-check-input" type="radio" name="non_hf_chronic_renal" id="renal1" value="0" <?php  if ( $non_hf_chronic_renal_value == "0") { echo "checked"; }  ?>>
