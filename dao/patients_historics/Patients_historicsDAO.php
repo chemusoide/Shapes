@@ -268,13 +268,17 @@
                             id_patient = ?,
                             height = ?,
                             smoking_status = ?,
+                            heart_rhythm = ?,
+                            device_type = ?,
+                            left_ventricular_ejection_fraction = ?,
                             heart_disease_type = ?,
                             non_hf_periherla_vd = ?,
                             non_hf_cerebral_vd = ?,
                             non_hf_COPD = ?,
                             non_hf_supplemental_oxygen = ?,
                             non_hf_diabetes_melitus = ?,
-                            non_hf_chronic_renal = ?
+                            non_hf_chronic_renal = ?, 
+                            non_hf_year = ?
             				
             			WHERE 
             				id = ? ",
@@ -282,6 +286,9 @@
                         $reg -> getIdPatient(),
                         $reg -> getHeight(),
                 		$reg -> getSmokingStatus(),
+                        $reg -> getHeartRhythm(),
+                        $reg -> getDeviceType(),
+                        $reg -> getLeftVentricularEjectionFraction(),
                         $reg -> getHeartDiseaseType(),
                         $reg -> getNonHfPeriherlaVd(),
                         $reg -> getNonHfCerebralVd(),
@@ -289,6 +296,7 @@
                         $reg -> getNonHfSupplementalOxygen(),
                         $reg -> getNonHfDiabetesMelitus(),
                         $reg -> getNonHfChronicRenal(),
+                        $reg -> getNonHfYear(),
 
                         $reg -> getId()
             	)
@@ -316,28 +324,36 @@
                         id_patient,
                         height,
                         smoking_status,
+                        heart_rhythm,
+                        device_type,
+                        left_ventricular_ejection_fraction,
                         heart_disease_type,
                         non_hf_periherla_vd,
                         non_hf_cerebral_vd,
                         non_hf_COPD,
                         non_hf_supplemental_oxygen,
                         non_hf_diabetes_melitus,
-                        non_hf_chronic_renal
+                        non_hf_chronic_renal,
+                        non_hf_year
                         )
 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 
                 array(
                     $reg -> getIdPatient(),
                     $reg -> getHeight(),
                 	$reg -> getSmokingStatus(),
+                    $reg -> getHeartRhythm(),
+                    $reg -> getDeviceType(),
+                    $reg -> getLeftVentricularEjectionFraction(),
                     $reg -> getHeartDiseaseType(),
                     $reg -> getNonHfPeriherlaVd(),
                     $reg -> getNonHfCerebralVd(),
                     $reg -> getNonHfCOPD(),
                     $reg -> getNonHfSupplementalOxygen(),
                     $reg -> getNonHfDiabetesMelitus(),
-                    $reg -> getNonHfChronicRenal()
+                    $reg -> getNonHfChronicRenal(),
+                    $reg -> getNonHfYear(),
                     )
             );
                         

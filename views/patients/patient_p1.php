@@ -30,7 +30,7 @@
         } // end if
 
         if ( isset($patients_historics) ) {
-
+            
 
             //var_dump($patients_historics);
             if ($patients_historics -> getHeight() != NULL){
@@ -51,9 +51,9 @@
                 $lvef = "No Data";
             } // End if
 
-            if ( $patients_historics -> getHeartRhythm() == "S"){
+            if ( $patients_historics -> getHeartRhythm() == 1){
                 $heart_rhythm = "SINUSUAL";
-            }elseif ($patients_historics -> getHeartRhythm() == "N"){
+            }elseif ($patients_historics -> getHeartRhythm() == 2){
                 $heart_rhythm = "NO SINUSUAL";
             }else {
                 $heart_rhythm = "No Data";
@@ -79,23 +79,23 @@
 
             switch ($device){
 
-                case "n":
+                case 1:
                     $device_type = "Does not carry";
                     break;
 
-                case "a":
+                case 2:
                     $device_type = "MCP";
                     break;
                 
-                case "b":
+                case 3:
                     $device_type = "DAI";
                     break;
 
-                case "c":
+                case 4:
                     $device_type = "TRC";
                     break;
 
-                case "d":
+                case 5:
                     $device_type = "DAI-TRC";
                     break;
                 
@@ -109,23 +109,23 @@
 
             switch ($heart_disease){
 
-                case "A":
+                case 0:
                     $heart_disease_type = "Ischaemic heart disease";
                     break;
 
-                case "B":
+                case 1:
                     $heart_disease_type = "Valvular heart disease";
                     break;
                 
-                case "C":
+                case 2:
                     $heart_disease_type = "Hypertensive heart disease";
                     break;
 
-                case "D":
+                case 3:
                     $heart_disease_type = "Idiopathic heart disease";
                     break;
 
-                case "E":
+                case 4:
                     $heart_disease_type = "Others";
                     break;
 
@@ -176,7 +176,7 @@
             }else{
                 $hf_symptomatology = "No Data";
             } // End if
-
+            //echo "AÑO: $diagnostic_hf_year";
             $year_with_hf = date('Y') - $diagnostic_hf_year;
 
 
@@ -194,6 +194,8 @@
             }else{
                 $year_non_hf = "No Data";
             } // End if
+
+                $yearsuntilnow = date('Y') - $year_non_hf;
 
             if ($patients_historics -> getMedicalConditionsOther() != NULL){
                 $other_relevant_medical_conditions = $patients_historics -> getMedicalConditionsOther();
@@ -300,6 +302,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-4">    
                             <div class="card mb-4">
                                 <div class="card-header">
@@ -310,6 +313,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-4">    
                             <div class="card mb-4">
                                 <div class="card-header">
@@ -320,6 +324,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-header">
@@ -330,6 +335,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-header">
@@ -340,6 +346,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-header">
@@ -350,6 +357,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-header">
@@ -360,6 +368,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-header">
@@ -371,6 +380,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-header">
@@ -393,17 +403,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    YEAR OF DIAGNOSIS OF 'HF'
-                                </div>
-                                <div class="card-body">
-                                    <?php echo $diagnostic_hf_year; ?>
-                                </div>
-                            </div>
-                        </div>
                         
                         <div class="col-lg-4">
                             <div class="card mb-4">
@@ -422,7 +421,7 @@
                                     YEARS WITH HF
                                 </div>
                                 <div class="card-body">
-                                    <?php echo $year_with_hf; ?>
+                                    <?php echo "$yearsuntilnow years from <i>$year_non_hf</i>"; ?>
                                 </div>
                             </div>
                         </div>
@@ -500,17 +499,6 @@
                                 </div>
                                 <div class="card-body">
                                     <?php echo $non_hf_chronic_renal;?>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    YEARS OF DIAGNOSIS/EVEN OF NON-HF MEDICAL CONDITIONS
-                                </div>
-                                <div class="card-body">
-                                    <?php echo $year_non_hf  ?>
                                 </div>
                             </div>
                         </div>

@@ -97,6 +97,60 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label for="heart_rhythm">Heart Rhythm</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="heart_rhythm" id="heart_rhythm1" value="1" <?php  if ( isset($patients_historics) && $patients_historics -> getHeartRhythm() == "1") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="heart_rhythm1">
+                                        Sinusual
+                                    </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="heart_rhythm" id="heart_rhythm2" value="2" <?php  if ( isset($patients_historics) && $patients_historics -> getHeartRhythm() == "2") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="heart_rhythm2">
+                                        No Sinusual
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="device_form">Device Type</label>
+                                <div class="col-sm-10">
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="device_type" id="device1" value=1 <?php  if ( isset($patients_historics) && $patients_historics -> getDeviceType() == "1") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="device1">
+                                        Does not carry
+                                    </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="device_type" id="device2" value=2 <?php  if ( isset($patients_historics) && $patients_historics -> getDeviceType() == "2") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="device2">
+                                        MCP
+                                    </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="device_type" id="device3" value=3 <?php  if ( isset($patients_historics) && $patients_historics -> getDeviceType() == "3") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="device3">
+                                        DAI
+                                    </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="device_type" id="device4" value=4 <?php  if ( isset($patients_historics) && $patients_historics -> getDeviceType() == "4") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="device4">
+                                        TRC
+                                    </label>
+                                    </div>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="device_type" id="device5" value=5 <?php  if ( isset($patients_historics) && $patients_historics -> getDeviceType() == "5") { echo "checked"; }  ?>>
+                                    <label class="form-check-label" for="device5">
+                                        DAI-TRC
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <? //var_dump($patients_devices_w);?>
                             <div class="form-group">
                                 <label>Current weight <?php echo $last_weigh; ?>kg</label><br>
@@ -115,35 +169,46 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="heart_disease" id="heart_disease0" value="0" <?php  if ( isset($patients_historics) && $patients_historics -> getHeartDiseaseType() == "0") { echo "checked"; }  ?>>
                                         <label class="form-check-label" for="heart_disease0">
-                                            isq
+                                            Ischaemic heart disease
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="heart_disease" id="heart_disease1" value="1" <?php  if ( isset($patients_historics) && $patients_historics -> getHeartDiseaseType() == "1") { echo "checked"; }  ?>>
                                         <label class="form-check-label" for="heart_disease1">
-                                            valv
+                                            Valvular heart disease
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="heart_disease" id="heart_disease2" value="2" <?php  if ( isset($patients_historics) && $patients_historics -> getHeartDiseaseType() == "2") { echo "checked"; }  ?>>
                                         <label class="form-check-label" for="heart_disease2">
-                                            HTA
+                                            Hypertensive heart disease
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="heart_disease" id="heart_disease3" value="3" <?php  if ( isset($patients_historics) && $patients_historics -> getHeartDiseaseType() == "3") { echo "checked"; }  ?>>
                                         <label class="form-check-label" for="heart_disease3">
-                                            idiop
+                                            Diopathic heart disease
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="heart_disease" id="heart_disease4" value="4" <?php  if ( isset($patients_historics) && $patients_historics -> getHeartDiseaseType() == "4") { echo "checked"; }  ?>>
                                         <label class="form-check-label" for="heart_disease4">
-                                            others
+                                            Others
                                         </label>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="lvef">Left ventricular ejection fraction</label>
+                                <input class="form-control" type="text" placeholder="%" name="left_ventricular_ejection_fraction" id="left_ventricular_ejection_fraction" value="<?php if ( isset($patients_historics) ) { echo $patients_historics -> getLeftVentricularEjectionFraction(); } ?>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age">Years with HF</label>
+                                <input class="form-control" type="text" placeholder="yyyy-mm-dd" name="non_hf_year" id="non_hf_year" value="<?php if ( isset($patients_historics) ) { echo $patients_historics -> getNonHfYear(); } ?>">
+                            </div>
+
 
                             <div class="form-group">
                                 <label for="urea">Urea level</label>
