@@ -214,6 +214,9 @@
     // En este caso nos vienen muchas líneas porque hay una por cada pregunta-respuesta
     $num_patients_chatbot = count($patients_chatbot);
     
+    // Inicializamos el array de fechas
+    $patients_chatbot_date_dd_mm_yyyy_raw = [];
+
     // Recorremos todo el bloque para sacar los datos.
     for ($i = 0; $i < $num_patients_chatbot; $i++) {
 
@@ -225,13 +228,21 @@
         #Creamos el objeto
         $patients_chatbot_time_stamp_object =new DateTime($patients_chatbot_time_stamp);
         
-        //Lo vamos guardoad en el formato deseado en un array (quedan todas las líneas guardadas y por tanto hay repetido)
-        //Fuera del for quitamos las repetidas
-        $patients_chatbot_date_dd_mm_yyyy_raw[] = $patients_chatbot_time_stamp_object->format("j/m/Y"); 
+        // Lo vamos guardoad en el formato deseado en un array (quedan todas las líneas guardadas y por tanto hay repetido)
+        // Lo que haremos es guardar el valor en una variable y comprarala con el último valor del array
+        // Si existe no lo añadimos y si no existe lo añadimos:
+
+        // Guaradmos la fecha en una variable temporal
+        $temporal_date = $patients_chatbot_time_stamp_object->format("j/m/Y"); 
+        //echo "Temporal Date: <h1>$temporal_date</h1>";
+        // Buscamos en el array si existe la fecha si no existe lo guardamos
+        if (!in_array($temporal_date, $patients_chatbot_date_dd_mm_yyyy_raw, true)) {
+            //echo "<h1>NO EXISTE</h1>";
+            $patients_chatbot_date_dd_mm_yyyy_raw[] = $temporal_date;
+        }// end if
 
         // Separamos las preguntas según cuestionario y preguta
         // empezamos por la pregunta 2 porque la 1 es irrelevante.
-
 
         // Respuesta a cuestionario 1 respuesta 2
         if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "2"){
