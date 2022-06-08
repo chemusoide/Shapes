@@ -151,13 +151,13 @@
                                             <strong> In the last 3 days, did you take any additional medication without supervision?</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_4[0], 1); ?>><?php echo $patients_chatbot_respuesta_1_4[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_4[0], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_4[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_4[1], 1); ?>><?php echo $patients_chatbot_respuesta_1_4[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_4[1], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_4[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_4[2], 1); ?>><?php echo $patients_chatbot_respuesta_1_4[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_4[2], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_4[2]); ?>
                                         </td>
                                     </tr>
 
@@ -166,13 +166,13 @@
                                             <strong>Could you take walks like the previous days?</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_5[0], 1); ?>><?php echo $patients_chatbot_respuesta_1_5[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_5[0], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_5[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_5[1], 1); ?>><?php echo $patients_chatbot_respuesta_1_5[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_5[1], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_5[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_5[2], 1); ?>><?php echo $patients_chatbot_respuesta_1_5[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_5[2], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_5[2]); ?>
                                         </td>
                                     </tr>
 
@@ -181,13 +181,13 @@
                                             <strong>Did you have a choking feeling or shortness of breath when you lay in bed?</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_6[0], 1); ?>><?php echo $patients_chatbot_respuesta_1_6[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_6[0], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_6[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_6[1], 1); ?>><?php echo $patients_chatbot_respuesta_1_6[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_6[1], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_6[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_6[2], 1); ?>><?php echo $patients_chatbot_respuesta_1_6[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_6[2], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_6[2]); ?>
                                         </td>
                                     </tr>
 
@@ -196,13 +196,13 @@
                                             <strong>Did you cough more or have more phlegm?</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_7[0], 1); ?>><?php echo $patients_chatbot_respuesta_1_7[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_7[0], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_7[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_7[1], 1); ?>><?php echo $patients_chatbot_respuesta_1_7[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_7[1], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_7[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_7[2], 1); ?>><?php echo $patients_chatbot_respuesta_1_7[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_7[2], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_7[2]); ?>
                                         </td>
                                     </tr>
 
@@ -211,13 +211,13 @@
                                             <strong>Does your medication make you feel bad, such as dizzy or makes your blood pressure drop, or any other side effect?</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_8[0], 1); ?>><?php echo $patients_chatbot_respuesta_1_8[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_8[0], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_8[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_8[1], 1); ?>><?php echo $patients_chatbot_respuesta_1_8[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_8[1], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_8[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_8[2], 1); ?>><?php echo $patients_chatbot_respuesta_1_8[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_8[2], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_8[2]); ?>
                                         </td>
                                     </tr>
 
@@ -226,13 +226,13 @@
                                             <strong>For the last 3 days, did you follow the diet and exercise recommendations given by your doctor and nurse?</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_9[0], 1); ?>> <?php echo $patients_chatbot_respuesta_1_9[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_9[0], 1); ?>> <?php echo utf8_encode($patients_chatbot_respuesta_1_9[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_9[1], 1); ?>> <?php echo $patients_chatbot_respuesta_1_9[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_9[1], 1); ?>> <?php echo utf8_encode($patients_chatbot_respuesta_1_9[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_9[2], 1); ?>> <?php echo $patients_chatbot_respuesta_1_9[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_9[2], 1); ?>> <?php echo utf8_encode($patients_chatbot_respuesta_1_9[2]); ?>
                                         </td>
                                     </tr>
 
@@ -241,13 +241,13 @@
                                             <strong>Do you notice you urinate less, more or the same?</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_10[0], 2); ?>><?php echo $patients_chatbot_respuesta_1_10[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_10[0], 2); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_10[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_10[1], 2); ?>><?php echo $patients_chatbot_respuesta_1_10[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_10[1], 2); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_10[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_10[2], 2); ?>><?php echo $patients_chatbot_respuesta_1_10[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_10[2], 2); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_10[2]); ?>
                                         </td>
                                     </tr>
 
@@ -256,13 +256,13 @@
                                             <strong>Did you have chest o neck palpitations recently?</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_11[0], 1); ?>><?php echo $patients_chatbot_respuesta_1_11[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_11[0], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_11[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_11[1], 1); ?>><?php echo $patients_chatbot_respuesta_1_11[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_11[1], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_11[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_11[2], 1); ?>><?php echo $patients_chatbot_respuesta_1_11[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_11[2], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_11[2]); ?>
                                         </td>
                                     </tr>
 
@@ -271,13 +271,13 @@
                                             <strong>Do you feel that you have more day drowsiness?</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_12[0], 1); ?>><?php echo $patients_chatbot_respuesta_1_12[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_12[0], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_12[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_12[1], 1); ?>><?php echo $patients_chatbot_respuesta_1_12[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_12[1], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_12[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_12[2], 1); ?>><?php echo $patients_chatbot_respuesta_1_12[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_1_12[2], 1); ?>><?php echo utf8_encode($patients_chatbot_respuesta_1_12[2]); ?>
                                         </td>
                                     </tr>
 
@@ -322,13 +322,13 @@
                                             <strong>I forget to take them</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_2[0], 5); ?>><?php echo $patients_chatbot_respuesta_2_2[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_2[0], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_2[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_2[1], 5); ?>><?php echo $patients_chatbot_respuesta_2_2[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_2[1], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_2[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_2[2], 5); ?>><?php echo $patients_chatbot_respuesta_2_2[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_2[2], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_2[2]); ?>
                                         </td>
                                     </tr>
 
@@ -337,13 +337,13 @@
                                             <strong>I alter the dose</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_3[0], 5); ?>><?php echo $patients_chatbot_respuesta_2_3[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_3[0], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_3[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_3[1], 5); ?>><?php echo $patients_chatbot_respuesta_2_3[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_3[1], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_3[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_3[2], 5); ?>><?php echo $patients_chatbot_respuesta_2_3[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_3[2], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_3[2]); ?>
                                         </td>
                                     </tr>
 
@@ -352,13 +352,13 @@
                                             <strong> I stop taking them for a while</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_4[0], 5); ?>><?php echo $patients_chatbot_respuesta_2_4[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_4[0], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_4[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_4[1], 5); ?>><?php echo $patients_chatbot_respuesta_2_4[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_4[1], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_4[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_4[2], 5); ?>><?php echo $patients_chatbot_respuesta_2_4[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_4[2], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_4[2]); ?>
                                         </td>
                                     </tr>
 
@@ -367,13 +367,13 @@
                                             <strong>I decide to miss out a dose</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_5[0], 5); ?>><?php echo $patients_chatbot_respuesta_2_5[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_5[0], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_5[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_5[1], 5); ?>><?php echo $patients_chatbot_respuesta_2_5[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_5[1], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_5[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_5[2], 5); ?>><?php echo $patients_chatbot_respuesta_2_5[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_5[2], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_5[2]); ?>
                                         </td>
                                     </tr>
 
@@ -382,13 +382,13 @@
                                             <strong>I take less than instructed</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_6[0], 5); ?>><?php echo $patients_chatbot_respuesta_2_6[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_6[0], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_6[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_6[1], 5); ?>><?php echo $patients_chatbot_respuesta_2_6[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_6[1], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_6[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_6[2], 5); ?>><?php echo $patients_chatbot_respuesta_2_6[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_2_6[2], 5); ?>><?php echo utf8_encode($patients_chatbot_respuesta_2_6[2]); ?>
                                         </td>
                                     </tr>
 
@@ -432,13 +432,13 @@
                                             <strong>Has any doctor changed anything of your medication that Clinica Humana is not aware of? </strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_1[0],3); ?>><?php echo $patients_chatbot_respuesta_3_1[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_1[0],3); ?>><?php echo utf8_encode($patients_chatbot_respuesta_3_1[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_1[1],3); ?>><?php echo $patients_chatbot_respuesta_3_1[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_1[1],3); ?>><?php echo utf8_encode($patients_chatbot_respuesta_3_1[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_1[2],3); ?>><?php echo $patients_chatbot_respuesta_3_1[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_1[2],3); ?>><?php echo utf8_encode($patients_chatbot_respuesta_3_1[2]); ?>
                                         </td>
                                     </tr>
 
@@ -447,13 +447,13 @@
                                             <strong>Did you have new blood or urine test results that Clinica Humana is not aware of?</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_2[0], 3); ?>><?php echo $patients_chatbot_respuesta_3_2[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_2[0], 3); ?>><?php echo utf8_encode($patients_chatbot_respuesta_3_2[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_2[1], 3); ?>><?php echo $patients_chatbot_respuesta_3_2[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_2[1], 3); ?>><?php echo utf8_encode($patients_chatbot_respuesta_3_2[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_2[2], 3); ?>><?php echo $patients_chatbot_respuesta_3_2[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_2[2], 3); ?>><?php echo utf8_encode($patients_chatbot_respuesta_3_2[2]); ?>
                                         </td>
                                     </tr>
 
@@ -462,13 +462,13 @@
                                             <strong>Did you contact any health professional in addition to CH that you haven't told me yet?</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_3[0], 3); ?>><?php echo $patients_chatbot_respuesta_3_3[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_3[0], 3); ?>><?php echo utf8_encode($patients_chatbot_respuesta_3_3[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_3[1], 3); ?>><?php echo $patients_chatbot_respuesta_3_3[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_3[1], 3); ?>><?php echo utf8_encode($patients_chatbot_respuesta_3_3[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_3[2], 3); ?>><?php echo $patients_chatbot_respuesta_3_3[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_3[2], 3); ?>><?php echo utf8_encode($patients_chatbot_respuesta_3_3[2]); ?>
                                         </td>
                                     </tr>
 
@@ -477,13 +477,13 @@
                                             <strong>Have you been admitted to hospital and Clínica Humana is not aware of?</strong> 
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_4[0], 3); ?>><?php echo $patients_chatbot_respuesta_3_4[0]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_4[0], 3); ?>><?php echo utf8_encode($patients_chatbot_respuesta_3_4[0]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_4[1], 3); ?>><?php echo $patients_chatbot_respuesta_3_4[1]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_4[1], 3); ?>><?php echo utf8_encode($patients_chatbot_respuesta_3_4[1]); ?>
                                         </td>
                                         <td>
-                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_4[2], 3); ?>><?php echo $patients_chatbot_respuesta_3_4[2]; ?>
+                                            <p class = <?php echo fcolor ($patients_chatbot_respuesta_3_4[2], 3); ?>><?php echo utf8_encode($patients_chatbot_respuesta_3_4[2]); ?>
                                         </td>
                                     </tr>
 
