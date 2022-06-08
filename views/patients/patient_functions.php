@@ -7,19 +7,19 @@
 
             switch ($value) {
 
-                case "0":
+                case 0:
                     $text_color = "text-success";
                     break;
                         
-                case "1":
+                case 1:
                     $text_color = "text-primary";
                     break;
                 
-                case "2":
+                case 2:
                     $text_color = "text-warning";
                     break;
 
-                case "3":
+                case 3:
                     $text_color = "text-danger";
                     break;
 
@@ -69,27 +69,27 @@
         
             switch ($value) {
 
-                case "0":
+                case 0:
                     $text_color = "text-success";
                     break;
                         
-                case "1":
+                case 1:
                     $text_color = "text-success";
                     break;
                 
-                case "2":
+                case 2:
                     $text_color = "text-primary";
                     break;
 
-                case "3":
+                case 3:
                     $text_color = "text-warning";
                     break;
 
-                case "4":
+                case 4:
                     $text_color = "text-warning";
                     break;
 
-                case "5":
+                case 5:
                     $text_color = "text-danger";
                     break;
 
