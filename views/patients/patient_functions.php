@@ -29,19 +29,71 @@
 
             switch ($value) {
 
-                case "N/D":
+                case "Rara vez":
+                    $text_color = "text-primary";
+                    break;
+
+                case "No estoy seguro":
+                    $text_color = "text-primary";
+                    break;
+
+                case "Ahora no lo sé":
                     $text_color = "text-primary";
                     break;
                         
-                case "mejor":
+                case "Mejor":
+                    $text_color = "text-success";
+                    break;
+
+                case "Menos":
+                    $text_color = "text-success";
+                    break;
+
+                case "Nunca":
                     $text_color = "text-success";
                     break;
                 
-                case "igual":
+                case "Igual":
                     $text_color = "text-warning";
                     break;
 
-                case "peor":
+                case "A veces":
+                    $text_color = "text-warning";
+                    break;
+
+                case "Peor":
+                    $text_color = "text-danger";
+                    break;
+                
+                case "A menudo":
+                    $text_color = "text-danger";
+                    break;
+
+                case "NA":
+                    $text_color = "text-primary";
+                    break;
+                        
+                case "No":
+                    $text_color = "text-success";
+                    break;
+                
+                case "Sí":
+                    $text_color = "text-danger";
+                    break;
+
+                case "SÍ":
+                    $text_color = "text-danger";
+                    break;
+
+                case "Si":
+                    $text_color = "text-danger";
+                    break;
+                
+                case "SÃ­":
+                    $text_color = "text-danger";
+                    break;
+
+                case "S&iacute;":
                     $text_color = "text-danger";
                     break;
 
@@ -55,11 +107,15 @@
                     $text_color = "text-primary";
                     break;
                         
-                case "SÍ":
+                case "No":
                     $text_color = "text-danger";
                     break;
                 
-                case "NO":
+                case "Sí":
+                    $text_color = "text-success";
+                    break;
+
+                case "Si":
                     $text_color = "text-success";
                     break;
 
