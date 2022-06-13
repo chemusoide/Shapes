@@ -45,6 +45,30 @@
                 $initial_weight = "No Data";
             } // End if
 
+            if ($patients -> getOlderPersonSex() != NULL){
+                $older_person_sex = $patients -> getOlderPersonSex();
+
+                if ($older_person_sex == 1){
+
+                    $sex = "M";
+
+                }else{
+
+                    $sex = "F";
+
+                } // End if
+
+            }else{
+                $older_person_sex = "No Data";
+            } // End if
+
+            if ($patients -> getOlderPersonBirth() != NULL){
+                $older_person_Birth = $patients -> getOlderPersonBirth();
+                $edad = obtener_edad_segun_fecha ($older_person_Birth);
+            }else{
+                $older_person_Birth = "No Data";
+            } // End if
+
             if ($patients_historics -> getLeftVentricularEjectionFraction() != NULL){
                 $lvef = $patients_historics -> getLeftVentricularEjectionFraction();
             }else{
@@ -52,9 +76,9 @@
             } // End if
 
             if ( $patients_historics -> getHeartRhythm() == 1){
-                $heart_rhythm = "SINUSUAL";
+                $heart_rhythm = "SINUSAL";
             }elseif ($patients_historics -> getHeartRhythm() == 2){
-                $heart_rhythm = "NO SINUSUAL";
+                $heart_rhythm = "NO SINUSAL";
             }else {
                 $heart_rhythm = "No Data";
             }
@@ -292,6 +316,29 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
+
+                    <div class="col-lg-4">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    AGE
+                                </div>
+                                <div class="card-body">
+                                    <?php echo "$edad  years (born $older_person_Birth)"?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    SEX
+                                </div>
+                                <div class="card-body">
+                                    <?php echo $sex ?>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-header">
@@ -350,28 +397,6 @@
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    HEART RHYTHM - ATRIAL FIBRILLATION
-                                </div>
-                                <div class="card-body">
-                                    <?php echo $heart_rhythmAF ?>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    HEART RHYTHM - FLUTTER
-                                </div>
-                                <div class="card-body">
-                                    <?php echo $heart_rhythmF ?>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4">
-                                <div class="card-header">
                                     DEVICE TYPE
                                 </div>
                                 <div class="card-body">
@@ -396,43 +421,10 @@
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    OTHER TYPE OF HEART DISEASE
-                                </div>
-                                <div class="card-body">
-                                    <?php echo $hdto ?>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-4">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    SOURCE DATA OF 'YEARS OF DIAGNOSIS OF HF'
-                                </div>
-                                <div class="card-body">
-                                    <?php echo $year_source_diagnosis_value ?>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4">
-                                <div class="card-header">
                                     YEARS WITH HF
                                 </div>
                                 <div class="card-body">
                                     <?php echo "$yearsuntilnow years from <i>$year_non_hf</i>"; ?>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    HEART FAILURE STAGE (SYMPTOMATOLOGY)
-                                </div>
-                                <div class="card-body">
-                                    <?php echo $hf_symptomatology; ?>
                                 </div>
                             </div>
                         </div>
@@ -506,54 +498,10 @@
                         <div class="col-lg-4">
                             <div class="card mb-4">
                                 <div class="card-header">
-                                    OTHER RELEVANT MEDICAL CONDITIONS AND DATA
-                                </div>
-                                <div class="card-body">
-                                    <?php echo $other_relevant_medical_conditions ?>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    NO. OF MEDICAL CONDITIONS
-                                </div>
-                                <div class="card-body">
-                                    <?php echo $no_medical_conditions ?>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    DYSPNOEA LEVER
-                                </div>
-                                <div class="card-body">
-                                    <?php echo $dyspnoealevel ?>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4">
-                                <div class="card-header">
                                     SMOKING STATUS
                                 </div>
                                 <div class="card-body">
                                     <?php echo $smoking_status_value ?>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    RESPONSE TO STOPS WALKINGS
-                                </div>
-                                <div class="card-body">
-                                    <?php  echo $stop_walking; ?>
                                 </div>
                             </div>
                         </div>
