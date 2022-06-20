@@ -25,8 +25,34 @@
         require_once(SKEL_DIR . "/contentWrapper.php");
 
         //Configuraciones para reducir código
+
+        //Nombre alarmas:
+        $missing_01 = "Diet & Exercise (last 72h)";
+        $missing_02 = "Devices (last 24h)";
+        $missing_03 = "Weight (last 48h)";
+
+        $new_info_01 = "Medication";
+        $new_info_02 = "Hospital";
+        $new_info_03 = "Visit";
+        $new_info_04 = "Result";
+
+        $yellow_01 = "Felling worse";
+        $yellow_02 = "Light weight gain";
+
+        $orange_01 = "Palpitations";
+        $orange_02 = "Oliguria";
+        $orange_03 = "Medicine side effect";
+        $orange_04 = "Cough or phlegms";
+        $orange_05 = "Light weight gain & edema";
+        $orange_06 = "Heavy weight gain";
+
+        $red_01 = "Short of breath (activity)";
+        $red_02 = "Short of breath (in bed)";
+        $red_03 = "2 items alteration";
+        $red_04 = "Weight gain & edema";
         
-        $labelGeneralAlarms = array ("n/a", 
+        $labelGeneralAlarms = array ("n/a",
+                                     "No alteration", 
                                      "Missing data", 
                                      "New info",
                                      "Warning",
@@ -36,6 +62,7 @@
         $numGeneralAlarms = count($labelGeneralAlarms) -1;
 
         $indicatorPanels = array ("n/a",
+                                  "#collapseNoAlarms",
                                   "#collapseMissingData",
                                   "#collapseNewInformation",
                                   "#collapseWarningAlarm",
@@ -43,6 +70,7 @@
                                   "#collapseDangerAlarm",); //n/a, para empezar el array por 1
 
         $colorAlarm = array ("n/a",
+                             "btn btn-success btn-icon-split",
                              "btn btn-secondary btn-icon-split",
                              "btn btn-info btn-icon-split",
                              "btn btn-warning btn-icon-split",
@@ -51,39 +79,47 @@
 
         $iconAlarm = array ("n/a",
                              "fas fa-info-circle",
+                             "fas fa-info-circle",
                              "fas fa-flag",
                              "fas fa-exclamation-triangle",
                              "fas fa-exclamation-triangle",
                              "fas fa-exclamation-triangle"); //n/a, para empezar el array por 1
 
 
+        $noalarms_array = array ("n/a",
+                                 "No Alarms");//n/a, para empezar el array por 1
+
         $missingdata_array = array ("n/a",
-                                    "Q: Diet",
-                                    "Devices: W",
-                                    "W"); //n/a, para empezar el array por 1
+                                    $missing_01,
+                                    $missing_02,
+                                    $missing_03); //n/a, para empezar el array por 1
 
         $newinformation_array = array ("n/a",
-                                       "U: Med",
-                                       "U: Hosp",
-                                       "U: Visit",
-                                       "U: Result"); //n/a, para empezar el array por 1
+                                       $new_info_01,
+                                       $new_info_02,
+                                       $new_info_03,
+                                       $new_info_04); //n/a, para empezar el array por 1
 
         $warningAlarm_array = array ("n/a",
-                                    "Q: E",
-                                    "W"); //n/a, para empezar el array por 1    
+                                    $yellow_01,
+                                    $yellow_02); //n/a, para empezar el array por 1    
                                     
         $cautionAlarm_array = array ("n/a",
-                                    "Q: P",
-                                    "Q: U",
-                                    "Q: SE",
-                                    "Q: C",
-                                    "W-7",
-                                    "W-2"); //n/a, para empezar el array por 1
+                                    $orange_01,
+                                    $orange_02,
+                                    $orange_03,
+                                    $orange_04,
+                                    $orange_05,
+                                    $orange_06); //n/a, para empezar el array por 1
         
         $dangerAlarm_array = array ("n/a",
-                                    "Q: SoB",
-                                    "Q: SoBL",
-                                    "W"); //n/a, para empezar el array por 1
+                                    $red_01,
+                                    $red_02,
+                                    $red_03,
+                                    $red_04); //n/a, para empezar el array por 1
+
+        $dataPanels_noalarms = array ("n/a",
+                                      "#collapseNoAlarmData01");
 
         $dataPanels_missingData = array ("n/a",
                                "#collapseMissingData01",
@@ -111,10 +147,14 @@
         $dataPanels_DangerAlarm = array ("n/a",
                                          "#collapseDangerAlarmData01",
                                          "#collapseDangerAlarmData02",
-                                         "#collapseDangerAlarmData03");
+                                         "#collapseDangerAlarmData03",
+                                         "#collapseDangerAlarmData04");
 
 
         //Gestion del peso W de Devices
+
+        //Guardamos el numero de pacientes totales
+        $num_all_patients = count($all_patients);
 
         // Funcion que en un array multidimensional nos busca una id según un nivel de profundidad
          function search_in_array ($_array, $_key, $_column) {
@@ -162,19 +202,21 @@
          // TODO: -> Guardar el objeto del paciente o poderlo recuperar porque ahora solo guardamos el array
          //****AQUIIIII */
 
-        $num_patients_devices = count($patients_devices);
-        //echo "patients_devices: $patients_devices <br>";
+        //Trabajamos sobre los pacientes con datos de Peso que vienen de esta consulta getAllWeightRegister
+        $num_patients_data = count($patients_data);
+        //echo "patients_data: $patients_data <br>";
 
         //Recorro la lista al revés para tenerlos por orden de más nuevo a más viejas las fechas
-        $patients_devices_rev = array_reverse ($patients_devices);
-        //echo "patients_devices_rev: $patients_devices_rev <br>";
+        $patients_data_rev = array_reverse ($patients_data);
+        //echo "patients_data_rev: $patients_data_rev <br>";
 
-        for ($i = 0; $i < $num_patients_devices; $i++) {
+        for ($i = 0; $i < $num_patients_data; $i++) {
             
             //Pasamos los pacientes para poder manejarlos
-            $tmp = (object)$patients_devices_rev[$i];
+            $tmp = (object)$patients_data_rev[$i];
             $id_patient = $tmp -> getIdPatient();
 
+            //Buscamos en el Array si existe el id
             $key_list = search_in_array($list_patients_w_id, $id_patient, $index_count);
 
             // Sino No existe lo añadimos en el siguiente ID
@@ -382,6 +424,9 @@
 
         $numAlarmArray[] = 0; // Creamos un array con los números de alarma, el primero es 0 para contar desde el 1
 
+        //No alarms
+        $numAlarmArray[] = $num_all_patients;
+
         // Missing data
         $numAlarm_1_1 = count($alarm_1_1);
         $numAlarm_1_2 = count($alarm_1_2);
@@ -518,8 +563,8 @@
         } // End Function
         
         //TODO  _tableInfo($numAlarm_1_1,$alarm_1_1);
-         //Creamos la función que crea la tabla de información si no es un Objeto 
-         function _tableInfo2 ($_numAlarm, $_patient_alarm, $_all_patients){
+        //Creamos la función que crea la tabla de información si no es un Objeto 
+        function _tableInfo2 ($_numAlarm, $_patient_alarm, $_all_patients){
            
             $html = 
                 '<div class="table-responsive">
@@ -534,6 +579,7 @@
                         </thead>
                         <tbody>
                         ';
+                                
                                 $_num_patients = count($_all_patients);
                                 for ($i = 0; $i < $_num_patients; $i++) {
                             
@@ -573,8 +619,57 @@
                 echo $html;
 
         } // End Function
-        
 
+        //Creamos la función que crea la tabla de información si no hay alarmas
+        function _tableInfo3 ($_patients_no_alarm){
+           
+            $html = 
+            '<div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>P1</th>
+                            <th>P2</th>
+                            <th>P3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    ';
+                        $_num_patients_no_alarm = count($_patients_no_alarm);
+
+                        for ($i = 0; $i < $_num_patients_no_alarm; $i++) {
+                
+                            $patient = (object)$_patients_no_alarm[$i];
+                            $html .=
+                                '<tr>
+                                    <td>
+                                        <a href= "index.php?controller=patients&amp;option=query_p1&amp;id='. $patient -> getId() .' "> '. $patient -> getIdString().'</a>
+                                    </td>
+                                    <td>
+                                        <a href= "index.php?controller=patients&amp;option=query_p1&amp;id='.  $patient -> getId() .' ">P1</a>
+                                    </td>
+                                    <td>
+                                        <a href= "index.php?controller=patients&amp;option=query_p2&amp;id='.  $patient -> getId() .' ">P2</a>
+                                    </td>
+                                    <td>
+                                        <a href= "index.php?controller=patients&amp;option=query_p3&amp;id='.  $patient -> getId() .' ">P3</a>
+                                    </td>
+                                </tr>';
+
+                        } // End for
+
+                    $html .='
+                    
+                    </tbody>
+                </table>
+            </div>';
+       
+            echo $html;
+
+        } // End Function
+        
+        //echo "Num patients: $num_all_patients";
 ?>
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -595,7 +690,6 @@
                             <div class="my-2"></div>
                             <h3>Alarms:</h3>
                             <?php
-
                             // Por cada alarma generamos un botón 
                             // Este botón enviará a desplegar el panel correspondiente de inidicadores con un botón por cada indicador
                             // Yo tengo las alarmas de menos a mas importancia  la primera menos importante, la última más importante,
@@ -770,13 +864,27 @@
                 </div>
                 <!-- Second Column 5 -->
 
+                <!-- Second Column 6 -->
+                <div id="collapseNoAlarms" class="collapse col-lg-6">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <div class="information"></div>
+                            <h3>Patients No Alarm:</h3>
+                            <?php _tableInfo3($all_patients);?>
+                        <!-- card body -->   
+                        </div>
+                    </div>
+                </div>
+                <!-- Second Column 6 -->
+
                 <!-- Third Column alarm 1 panel 1-->
                 <div id="collapseMissingData01" class="collapse col-lg-6">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $missing_01;?></h3>
                             <?php _tableInfo($numAlarm_1_1,$alarm_1_1);?>
                         <!-- card body -->   
                         </div>
@@ -790,7 +898,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $missing_02;?></h3>
                             <?php _tableInfo($numAlarm_1_2,$alarm_1_2);?>
                         <!-- card body -->   
                         </div>
@@ -804,7 +912,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients  <?php echo $missing_03;?></h3>
                             <?php _tableInfo($numAlarm_1_3,$alarm_1_3);?>
                             
                         <!-- card body -->   
@@ -820,7 +928,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $new_info_01;?></h3>
                             <?php _tableInfo($numAlarm_2_1,$alarm_2_1);?>
                         <!-- card body -->   
                         </div>
@@ -834,7 +942,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $new_info_02;?></h3>
                             <?php _tableInfo($numAlarm_2_2,$alarm_2_2);?>
                         <!-- card body -->   
                         </div>
@@ -848,7 +956,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $new_info_03;?></h3>
                             <?php _tableInfo($numAlarm_2_3,$alarm_2_3);?>
                         <!-- card body -->   
                         </div>
@@ -862,7 +970,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $new_info_04;?></h3>
                             <?php _tableInfo($numAlarm_2_4,$alarm_2_4);?>
                         <!-- card body -->   
                         </div>
@@ -876,7 +984,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $yellow_01;?></h3>
                             <?php _tableInfo($numAlarm_3_1,$alarm_3_1);?>
                         <!-- card body -->   
                         </div>
@@ -890,7 +998,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $yellow_02;?></h3>
                             <?php _tableInfo2($numAlarm_3_2,$alarm_3_2,$all_patients);?>
                         <!-- card body -->   
                         </div>
@@ -904,7 +1012,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $orange_01;?></h3>
                             <?php _tableInfo($numAlarm_4_1,$alarm_4_1);?>
                         <!-- card body -->   
                         </div>
@@ -918,7 +1026,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $orange_02;?></h3>
                             <?php _tableInfo($numAlarm_4_2,$alarm_4_2);?>
                         <!-- card body -->   
                         </div>
@@ -932,7 +1040,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $orange_03;?></h3>
                             <?php _tableInfo($numAlarm_4_3,$alarm_4_3);?>
                         <!-- card body -->   
                         </div>
@@ -946,7 +1054,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $orange_04;?></h3>
                             <?php _tableInfo($numAlarm_4_4,$alarm_4_4);?>
                         <!-- card body -->   
                         </div>
@@ -960,7 +1068,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $orange_05;?></h3>
                             <?php echo "Alarma: ". $alarm_4_5." num: ".$numAlarm_4_5 ."<br>";?>
                             <?php _tableInfo2($numAlarm_4_5, $alarm_4_5, $all_patients);?>
                         <!-- card body -->   
@@ -975,7 +1083,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $orange_06;?></h3>
                             <?php _tableInfo2($numAlarm_4_6, $alarm_4_6, $all_patients);?>
                         <!-- card body -->   
                         </div>
@@ -989,7 +1097,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $red_01;?></h3>
                             <?php _tableInfo($numAlarm_5_1,$alarm_5_1);?>
                         <!-- card body -->   
                         </div>
@@ -1003,7 +1111,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>Patients <?php echo $red_02;?></h3>
                             <?php _tableInfo($numAlarm_5_2,$alarm_5_2);?>
                         <!-- card body -->   
                         </div>
@@ -1017,7 +1125,7 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>Patients:</h3>
+                            <h3>¡PENDIENTE!Patients: <?php echo $red_03;?></h3>
                             <?php _tableInfo2($numAlarm_5_3,$alarm_5_3,$all_patients);?>
                         <!-- card body -->   
                         </div>
@@ -1030,6 +1138,24 @@
         </div>
         <!-- /.container-fluid -->            
 
+        <!-- Third Column alarm 5 panel 3 -->
+        <div id="collapseDangerAlarmData04" class="collapse col-lg-6">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <div class="information"></div>
+                            <h3>Patients <?php echo $red_04;?></h3>
+                            <?php _tableInfo2($numAlarm_5_3,$alarm_5_3,$all_patients);?>
+                        <!-- card body -->   
+                        </div>
+                    </div>
+                <!-- Third Column alarm 5 panel 3 -->
+                </div>
+
+            </div>
+            <!-- Content Row  -->
+        </div>
+        <!-- /.container-fluid -->
 <?php
 
         require_once(SKEL_DIR . "/bodyEnd.php");
