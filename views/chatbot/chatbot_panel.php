@@ -156,6 +156,10 @@
         //Guardamos el numero de pacientes totales
         $num_all_patients = count($all_patients);
 
+        //Temporalmente decimos que son todos los pacientes
+        // TODO: calcular el número de pacientes sin alteraciones.
+        $num_patients_no_alterations = $num_all_patients;
+
         // Funcion que en un array multidimensional nos busca una id según un nivel de profundidad
          function search_in_array ($_array, $_key, $_column) {
 
@@ -425,7 +429,7 @@
         $numAlarmArray[] = 0; // Creamos un array con los números de alarma, el primero es 0 para contar desde el 1
 
         //No alarms
-        $numAlarmArray[] = $num_all_patients;
+        $numAlarmArray[] = $num_patients_no_alterations;
 
         // Missing data
         $numAlarm_1_1 = count($alarm_1_1);
@@ -497,18 +501,21 @@
 
         $numAlarmArray[] = $numAlarm4;
 
-        $alarm_5_3 = $alarm_2kg_2days_edema;
+        $alarm_5_4 = $alarm_2kg_2days_edema;
+
         // Danger alarm
         $numAlarm_5_1 = count($alarm_5_1);
         $numAlarm_5_2 = count($alarm_5_2);
-        $numAlarm_5_3 = count($alarm_2kg_2days_edema);
+        $numAlarm_5_3 = count($alarm_5_3);
+        $numAlarm_5_4 = count($alarm_2kg_2days_edema);
         
         $numAlarm_5_Array = array (0,
                                    $numAlarm_5_1,
                                    $numAlarm_5_2,
-                                   $numAlarm_5_3);
+                                   $numAlarm_5_3,
+                                   $numAlarm_5_4);
 
-        $numAlarm5 = $numAlarm_5_1 + $numAlarm_5_2 + $numAlarm_5_3;
+        $numAlarm5 = $numAlarm_5_1 + $numAlarm_5_2 + $numAlarm_5_3 + $numAlarm_5_4;
 
         $numAlarmArray[] = $numAlarm5;
 
@@ -1125,8 +1132,8 @@
                         <!-- card body -->
                         <div class="card-body">
                             <div class="information"></div>
-                            <h3>¡PENDIENTE!Patients: <?php echo $red_03;?></h3>
-                            <?php _tableInfo2($numAlarm_5_3,$alarm_5_3,$all_patients);?>
+                            <h3>Patients: <?php echo $red_03;?></h3>
+                            <?php _tableInfo($numAlarm_5_3,$alarm_5_3);?>
                         <!-- card body -->   
                         </div>
                     </div>
@@ -1145,7 +1152,7 @@
                         <div class="card-body">
                             <div class="information"></div>
                             <h3>Patients <?php echo $red_04;?></h3>
-                            <?php _tableInfo2($numAlarm_5_3,$alarm_5_3,$all_patients);?>
+                            <?php _tableInfo2($numAlarm_5_4,$alarm_5_4,$all_patients);?>
                         <!-- card body -->   
                         </div>
                     </div>

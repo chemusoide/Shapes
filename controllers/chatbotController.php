@@ -38,6 +38,7 @@
 
 					$alarm_5_1 = $patientsDAO -> getAlarm_5_1();
 					$alarm_5_2 = $patientsDAO -> getAlarm_5_2();
+					$alarm_5_3 = $patientsDAO -> getAlarm_5_3();
 
 					$alarm_edema = $patientsDAO -> getAlarm_edema();
 

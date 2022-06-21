@@ -127,7 +127,7 @@
                 "SELECT *
                     FROM patients WHERE patients.id_string NOT IN (
                         SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                            ON patients.id = patients_chatbot.user_id
+                            ON patients.id = patients_chatbot.id_patient
                         WHERE (
                             (patients_chatbot.pregunta = 8 AND idcuestionario = 1 AND patients_chatbot.respuesta IS NOT NULL) AND
                 
@@ -229,7 +229,7 @@
                 "SELECT *
                     FROM patients WHERE patients.id_string NOT IN (
                         SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                            ON patients.id = patients_chatbot.user_id
+                            ON patients.id = patients_chatbot.id_patient
                         WHERE (
                             (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
                     
@@ -275,7 +275,7 @@
 
             $rs = $db->Execute(
                 "SELECT * FROM patients JOIN patients_chatbot 
-                    ON patients.id = patients_chatbot.user_id
+                    ON patients.id = patients_chatbot.id_patient
                 WHERE (
                     (patients_chatbot.pregunta = 25 AND idcuestionario = 3 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
@@ -324,7 +324,7 @@
 
             $rs = $db->Execute(
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                ON patients.id = patients_chatbot.user_id
+                ON patients.id = patients_chatbot.id_patient
                 WHERE (
                     (patients_chatbot.pregunta = 22 AND idcuestionario = 3 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
@@ -371,7 +371,7 @@
 
             $rs = $db->Execute(
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                ON patients.id = patients_chatbot.user_id
+                ON patients.id = patients_chatbot.id_patient
                 WHERE (
                     (patients_chatbot.pregunta = 24 AND idcuestionario = 3 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
@@ -418,7 +418,7 @@
 
             $rs = $db->Execute(
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                ON patients.id = patients_chatbot.user_id
+                ON patients.id = patients_chatbot.id_patient
                 WHERE (
                     (patients_chatbot.pregunta = 23 AND idcuestionario = 3 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
@@ -465,7 +465,7 @@
 
             $rs = $db->Execute(
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                ON patients.id = patients_chatbot.user_id
+                ON patients.id = patients_chatbot.id_patient
                 WHERE (
                     (patients_chatbot.pregunta = 3 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'Peor') AND
             
@@ -512,7 +512,7 @@
 
             $rs = $db->Execute(
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                ON patients.id = patients_chatbot.user_id
+                ON patients.id = patients_chatbot.id_patient
                 WHERE (
                     (patients_chatbot.pregunta = 11 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
@@ -559,7 +559,7 @@
 
             $rs = $db->Execute(
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                ON patients.id = patients_chatbot.user_id
+                ON patients.id = patients_chatbot.id_patient
                 WHERE (
                     (patients_chatbot.pregunta = 10 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'menos') AND
             
@@ -606,7 +606,7 @@
 
             $rs = $db->Execute(
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                ON patients.id = patients_chatbot.user_id
+                ON patients.id = patients_chatbot.id_patient
                 WHERE (
                     (patients_chatbot.pregunta = 8 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'No') AND
             
@@ -653,7 +653,7 @@
 
             $rs = $db->Execute(
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                ON patients.id = patients_chatbot.user_id
+                ON patients.id = patients_chatbot.id_patient
                 WHERE (
                     (patients_chatbot.pregunta = 7 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
@@ -700,7 +700,7 @@
 
             $rs = $db->Execute(
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                ON patients.id = patients_chatbot.user_id
+                ON patients.id = patients_chatbot.id_patient
                 WHERE (
                     (patients_chatbot.pregunta = 6 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
@@ -747,13 +747,115 @@
 
             $rs = $db->Execute(
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                ON patients.id = patients_chatbot.user_id
+                ON patients.id = patients_chatbot.id_patient
                 WHERE (
                     (patients_chatbot.pregunta = 5 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'No') AND
             
                     (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
             
                 )
+                " 
+            );
+
+            while (!$rs->EOF) {
+
+                $patientsData = new PatientsData();
+
+                $patientsData -> setId($rs->fields["id"]);
+                $patientsData -> setIdString($rs->fields["id_string"]);
+                $patientsData -> setIdCh($rs->fields["id_ch"]);
+                $patientsData -> setEducationContactPerson($rs->fields["education_contact_person"]);
+                $patientsData -> setOlderPersonBirth($rs->fields["older_person_birth"]);
+                $patientsData -> setOlderPersonSex($rs->fields["older_person_sex"]);
+                $patientsData -> setInitialWeight($rs->fields["initial_weight"]);
+                $patientsData -> setCreateTs($rs->fields["create_ts"]);
+                $patientsData -> setUpdateTs($rs->fields["update_ts"]);
+
+                $result[] = $patientsData;
+                $rs->MoveNext();
+
+            }
+            
+            GeneralDAO::closeConnection($db);
+
+            return $result;
+
+        } // End function getAlarm_5_2
+
+         /**
+         * El paciente comunica varias alarmas:
+         *  Q4 -> p5= yes -> Sí
+         *  Q5 -> p6 = yes -> Sí
+         *  Q6 -> p7 = yes -> Sí
+         *  Q7 -> p8 = yes -> Sí
+         *  Q9 -> p10 = less -> Menos
+         *  Q10 -> p11 = yes -> Sí
+         *  Q11 -> p12 = yes -> Sí
+         * @return Ambigous <multitype:, PatientsData>
+         * 
+         * OJO:
+         * Prueba <=
+         * Real >=
+         */
+        public function getAlarm_5_3() {
+
+            $db = GeneralDAO::getConnection();
+
+            $result = array();
+
+            $rs = $db->Execute(
+                "SELECT * FROM patients JOIN patients_chatbot 
+                    ON patients.id = patients_chatbot.id_patient
+                    WHERE (
+                            (
+                                (patients_chatbot.pregunta = 5 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            ) OR
+
+                            (
+                                (patients_chatbot.pregunta = 6 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            ) OR
+                            (
+                                (patients_chatbot.pregunta = 7 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            ) OR
+
+                            (
+                                (patients_chatbot.pregunta = 8 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            ) OR
+
+                            (
+                                (patients_chatbot.pregunta = 10 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'Menos' ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            ) OR
+
+                            (
+                                (patients_chatbot.pregunta = 11 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            ) OR
+
+                            (
+                                (patients_chatbot.pregunta = 12 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            )
+                        
+                        )
                 " 
             );
 
@@ -794,7 +896,7 @@
 
             $rs = $db->Execute(
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                ON patients.id = patients_chatbot.user_id
+                ON patients.id = patients_chatbot.id_patient
                 WHERE (
                     (patients_chatbot.pregunta = 2 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'peor' || patients_chatbot.respuesta = 'igual') ) AND
             
