@@ -810,48 +810,48 @@
                             (
                                 (patients_chatbot.pregunta = 5 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
                             
                             ) OR
 
                             (
                                 (patients_chatbot.pregunta = 6 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
                             
                             ) OR
                             (
                                 (patients_chatbot.pregunta = 7 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
                             
                             ) OR
 
                             (
                                 (patients_chatbot.pregunta = 8 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
                             
                             ) OR
 
                             (
                                 (patients_chatbot.pregunta = 10 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'Menos' ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
                             
                             ) OR
 
                             (
                                 (patients_chatbot.pregunta = 11 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
                             
                             ) OR
 
                             (
                                 (patients_chatbot.pregunta = 12 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
                             
                             )
                         

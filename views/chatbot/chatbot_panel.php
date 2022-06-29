@@ -194,6 +194,89 @@
          } //End funcion count_dias
 
 
+        /*BLOQUE GESTION DE ALRMA CON VARIAS ALARMAS BEGIN */
+
+        // Llegan los campos de las personas que tienen alguna de las alarmas conflictivas $alarm_5_3_chatbot
+        // Seleccionamos el primer usuario y miramos su idcuestionario y su pregunta $array_patient_cuestionario_pregunta
+        // si el idcuestionario y pregunta es distinto a los existente lo guardamos en un array (id_usu-cuestionario-pregunta)
+        // luego contamos en el array los id si tiene más de una alarma lo guardamos en la tabla array_id_patient_2alarms
+        $num_alarms_5_3_chatbot = count($alarm_5_3_chatbot);
+
+        $array_patient_cuestionario_pregunta = []; // Inicializamos array
+        $array_patient_cantidad = []; // Inicializamos array
+       
+        // recorremos las alarmas y verificamos el identificador para asegurarnos que no hay repetidos
+        // para ello creamo un id con id_patient-id_cuestionario-pregunta
+        // si se repite el ID no lo guardamos ya que hará referencia a la misma alarma en otro momento
+        for ($i = 0; $i < $num_alarms_5_3_chatbot; $i++) {
+
+            $conflicting_alarms = (object) $alarm_5_3_chatbot[$i];
+
+            $id_patient_alarm_5_3 = $conflicting_alarms -> getId_patient();
+            $id_cuestionario_alarm_5_3 = $conflicting_alarms -> getId_cuestionario();
+            $id_pregunta_alarm_5_3 = $conflicting_alarms -> getPregunta();
+
+            $identificador = $id_patient_alarm_5_3."-".$id_cuestionario_alarm_5_3."-".$id_pregunta_alarm_5_3;
+            //echo "alarma ID cuestionario: $identificador <br>";
+
+            // Si no existe el identificador lo añadimos
+            if (!in_array($identificador,$array_patient_cuestionario_pregunta)){
+                $array_patient_cuestionario_pregunta[] = $identificador;
+            } // end if
+
+        } // End for
+
+        // Separamos con explode el ID de usuario (ya que sabemos que no corresponde a la misma alarma)
+        // revisamos si en el array está, si está ponemos un +1 al contador si no está lo añadimos
+        $num_patient_cuestionario_pregunta = count($array_patient_cuestionario_pregunta);
+        
+        for ($i=0; $i<$num_patient_cuestionario_pregunta; $i++){
+
+            $patient_separado_3_trozos = explode ("-", $array_patient_cuestionario_pregunta[$i]);
+            //echo "ID Patient 3 trozos: $patient_separado_3_trozos[0]<br>";
+
+            $id_patient_separado[] = $patient_separado_3_trozos[0];
+            //echo "ID Patient: $id_patient_separado<br>";
+
+        } // End for
+
+        $array_patient_cantidad = array_count_values($id_patient_separado);
+        //echo "Array: $array_patient_cantidad[4]";
+
+        // recorremos el array de ID y cogemos valores lo buscamos en el array de usados.
+        // Si ya lo he usado lo descartamos y cogemso siguiente
+        // si no lo he usado
+        // lo añado al arrya de descartes y miro si es = o mayor a 2 
+        // si es menor de 2 lo descarto
+        // si es igual o mayor que 2 lo guardo en array de $alarmas_2_tipos
+
+        $num_id_patient_separado = count($id_patient_separado);
+        $array_descartes = []; //inicializamos array
+        //echo "N: $num_id_patient_separado";
+        for ($i=0; $i < $num_id_patient_separado; $i++){
+
+            $valor_pendiente_descartar = $id_patient_separado[$i];
+
+            //miramos si no está en el array de descartes
+            if (!in_array($valor_pendiente_descartar,$array_descartes)){
+
+                // Si no está lo añadimos
+                $array_descartes[] = $valor_pendiente_descartar;
+
+                // Miramos si el valor es mayor de 2 y entonces lo añadimos a la alarma
+                if ($array_patient_cantidad[$valor_pendiente_descartar]>=2){
+
+                    // Añadimos a la alarma el valor
+                    $alarmas_2_tipos[] = $valor_pendiente_descartar;
+
+                } // End if
+
+            } // End if
+
+        } // End for
+
+        /*BLOQUE GESTION DE ALRMA CON VARIAS ALARMAS END */
+        
         // Creamos un array multidimensional con los ID de paciente 
         // y los 3 datos a continuación por cada aparición 
         //Inicializamos el array
@@ -506,16 +589,16 @@
         // Danger alarm
         $numAlarm_5_1 = count($alarm_5_1);
         $numAlarm_5_2 = count($alarm_5_2);
-        $numAlarm_5_3 = count($alarm_5_3);
+        $num_alarmas_2_tipos = count($alarmas_2_tipos);
         $numAlarm_5_4 = count($alarm_2kg_2days_edema);
         
         $numAlarm_5_Array = array (0,
                                    $numAlarm_5_1,
                                    $numAlarm_5_2,
-                                   $numAlarm_5_3,
+                                   $num_alarmas_2_tipos,
                                    $numAlarm_5_4);
 
-        $numAlarm5 = $numAlarm_5_1 + $numAlarm_5_2 + $numAlarm_5_3 + $numAlarm_5_4;
+        $numAlarm5 = $numAlarm_5_1 + $numAlarm_5_2 + $num_alarmas_2_tipos + $numAlarm_5_4;
 
         $numAlarmArray[] = $numAlarm5;
 
@@ -569,7 +652,6 @@
 
         } // End Function
         
-        //TODO  _tableInfo($numAlarm_1_1,$alarm_1_1);
         //Creamos la función que crea la tabla de información si no es un Objeto 
         function _tableInfo2 ($_numAlarm, $_patient_alarm, $_all_patients){
            
@@ -673,6 +755,67 @@
             </div>';
        
             echo $html;
+
+        } // End Function
+
+        //Creamos la función que crea la tabla de información si no es un Objeto y los pacientes son un array
+        function _tableInfo4 ($_numAlarm, $_patient_alarm, $_all_patients){
+           
+            $html = 
+                '<div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>P1</th>
+                                <th>P2</th>
+                                <th>P3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        ';
+                            for ($j=0; $j < $_numAlarm; $j++){
+
+                                $_num_patients = count($_all_patients);
+                                for ($i = 0; $i < $_num_patients; $i++) {
+                            
+                                    $patient = (object)$_all_patients[$i];
+
+                                    //echo "<h1>Patient: ". $patient -> getId() ."</h1>";
+                                    //echo "<h1>Patient_alarm: ". $_patient_alarm[$j] ."</h1>";
+
+                                    $id_patient = $patient -> getId();
+
+                                    if ($_patient_alarm[$j] == $id_patient){
+
+                                        $html .=
+                                        '<tr>
+                                            <td>
+                                                <a href= "index.php?controller=patients&amp;option=query_p1&amp;id='. $patient -> getId() .' "> '. $patient -> getIdString().'</a>
+                                            </td>
+                                            <td>
+                                                <a href= "index.php?controller=patients&amp;option=query_p1&amp;id='.  $patient -> getId() .' ">P1</a>
+                                            </td>
+                                            <td>
+                                                <a href= "index.php?controller=patients&amp;option=query_p2&amp;id='.  $patient -> getId() .' ">P2</a>
+                                            </td>
+                                            <td>
+                                                <a href= "index.php?controller=patients&amp;option=query_p3&amp;id='.  $patient -> getId() .' ">P3</a>
+                                            </td>
+                                        </tr>';
+                                    } // End if
+                                
+                                } // End for i
+
+                            } // End for j
+
+                        $html .='
+                        
+                        </tbody>
+                    </table>
+                </div>';
+           
+                echo $html;
 
         } // End Function
         
@@ -1133,7 +1276,7 @@
                         <div class="card-body">
                             <div class="information"></div>
                             <h3>Patients: <?php echo $red_03;?></h3>
-                            <?php _tableInfo($numAlarm_5_3,$alarm_5_3);?>
+                            <?php _tableInfo4($num_alarmas_2_tipos,$alarmas_2_tipos,$all_patients);?>
                         <!-- card body -->   
                         </div>
                     </div>

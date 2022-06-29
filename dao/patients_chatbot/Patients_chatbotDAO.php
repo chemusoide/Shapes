@@ -117,6 +117,107 @@
 
         } // End function
 
+
+         /**
+         * El paciente comunica varias alarmas:
+         *  Q4 -> p5= yes -> Sí
+         *  Q5 -> p6 = yes -> Sí
+         *  Q6 -> p7 = yes -> Sí
+         *  Q7 -> p8 = yes -> Sí
+         *  Q9 -> p10 = less -> Menos
+         *  Q10 -> p11 = yes -> Sí
+         *  Q11 -> p12 = yes -> Sí
+         * @return Ambigous <multitype:, PatientsData>
+         * 
+         * OJO:
+         * Prueba <=
+         * Real >=
+         */
+        public function getAlarm_5_3_chatbot() {
+
+            $db = GeneralDAO::getConnection();
+
+            $result = array();
+
+            $rs = $db->Execute(
+                "SELECT * FROM patients JOIN patients_chatbot 
+                    ON patients.id = patients_chatbot.id_patient
+                    WHERE (
+                            (
+                                (patients_chatbot.pregunta = 5 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            ) OR
+
+                            (
+                                (patients_chatbot.pregunta = 6 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            ) OR
+                            (
+                                (patients_chatbot.pregunta = 7 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            ) OR
+
+                            (
+                                (patients_chatbot.pregunta = 8 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            ) OR
+
+                            (
+                                (patients_chatbot.pregunta = 10 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'Menos' ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            ) OR
+
+                            (
+                                (patients_chatbot.pregunta = 11 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            ) OR
+
+                            (
+                                (patients_chatbot.pregunta = 12 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            
+                            )
+                        
+                        )
+                " 
+            );
+
+            while (!$rs->EOF) {
+
+                $patients_chatbotData = new Patients_chatbotData();
+
+                $patients_chatbotData -> setId($rs -> fields["id"]);
+                $patients_chatbotData -> setUserId($rs -> fields["user_id"]);
+                $patients_chatbotData -> setId_patient($rs -> fields["id_patient"]);
+                $patients_chatbotData -> setCuestionario($rs -> fields["cuestionario"]);
+                $patients_chatbotData -> setId_cuestionario($rs -> fields["idcuestionario"]);
+                $patients_chatbotData -> setPregunta($rs -> fields["pregunta"]);
+                $patients_chatbotData -> setRespuesta($rs -> fields["respuesta"]);
+                $patients_chatbotData -> setCreateTs($rs -> fields["create_ts"]);
+
+                $result[] = $patients_chatbotData;
+                $rs -> MoveNext();
+            }
+            
+            GeneralDAO::closeConnection($db);
+
+            return $result;
+
+        } // End function getAlarm_5_2
+
     } // End Class
 
 ?>
