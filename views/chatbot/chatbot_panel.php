@@ -52,7 +52,6 @@
         $red_04 = "Weight gain & edema";
         
         $labelGeneralAlarms = array ("n/a",
-                                     "No alteration", 
                                      "Missing data", 
                                      "New info",
                                      "Warning",
@@ -62,7 +61,6 @@
         $numGeneralAlarms = count($labelGeneralAlarms) -1;
 
         $indicatorPanels = array ("n/a",
-                                  "#collapseNoAlarms",
                                   "#collapseMissingData",
                                   "#collapseNewInformation",
                                   "#collapseWarningAlarm",
@@ -70,7 +68,6 @@
                                   "#collapseDangerAlarm",); //n/a, para empezar el array por 1
 
         $colorAlarm = array ("n/a",
-                             "btn btn-success btn-icon-split",
                              "btn btn-secondary btn-icon-split",
                              "btn btn-info btn-icon-split",
                              "btn btn-warning btn-icon-split",
@@ -79,15 +76,10 @@
 
         $iconAlarm = array ("n/a",
                              "fas fa-info-circle",
-                             "fas fa-info-circle",
                              "fas fa-flag",
                              "fas fa-exclamation-triangle",
                              "fas fa-exclamation-triangle",
                              "fas fa-exclamation-triangle"); //n/a, para empezar el array por 1
-
-
-        $noalarms_array = array ("n/a",
-                                 "No Alarms");//n/a, para empezar el array por 1
 
         $missingdata_array = array ("n/a",
                                     $missing_01,
@@ -117,9 +109,6 @@
                                     $red_02,
                                     $red_03,
                                     $red_04); //n/a, para empezar el array por 1
-
-        $dataPanels_noalarms = array ("n/a",
-                                      "#collapseNoAlarmData01");
 
         $dataPanels_missingData = array ("n/a",
                                "#collapseMissingData01",
@@ -151,14 +140,31 @@
                                          "#collapseDangerAlarmData04");
 
 
+        // Para los pacientes que no tienen ninguna alarma
+        // Crearé un array que irá recogiendo todas las id que tienen alguna alarma $any_alarm
+        // Luego compararé todas los id con los del array y descartaré los que estén en el array
+        // Tener en cuenta que si un array de alarmas no tiene alarmas puede tener el valor NULL en esa posición.
+        // Sin alarmas = Todos - alguna alarma
+        $any_alarm = []; //Inicializamos el array
+
+        // Creo una funcion para insertar los elementos de un array combinando los datos en any_alarm pero descarta si el array es NULL o está vacio
+        function insert_any_alarm_array ($_any_alarm, $_in_array){
+
+            //Descartamos los campos vacios y los NULL
+            if (!empty($_in_array) || $_in_array!=NULL){
+                
+                $_any_alarm = array_merge($_any_alarm, $_in_array);
+
+            }// End if
+
+            return $_any_alarm;
+
+        } // End function
+
         //Gestion del peso W de Devices
 
         //Guardamos el numero de pacientes totales
         $num_all_patients = count($all_patients);
-
-        //Temporalmente decimos que son todos los pacientes
-        // TODO: calcular el número de pacientes sin alteraciones.
-        $num_patients_no_alterations = $num_all_patients;
 
         // Funcion que en un array multidimensional nos busca una id según un nivel de profundidad
          function search_in_array ($_array, $_key, $_column) {
@@ -192,6 +198,23 @@
             return $diff_days;
 
          } //End funcion count_dias
+
+         // Función que entra un array de objetos y saca un array con los IDs
+         function array_ids ($_array_obj){
+
+            $_num_elements = count($_array_obj);
+            
+            for ($i = 0; $i < $_num_elements; $i++) {
+                            
+                $_element_object = (object)$_array_obj[$i];
+                
+                $_array_ids[] = $_element_object -> getId();
+
+            } // End for
+
+            return $_array_ids;
+
+         } // End function array_ids
 
 
         /*BLOQUE GESTION DE ALRMA CON VARIAS ALARMAS BEGIN */
@@ -276,7 +299,7 @@
         } // End for
 
         /*BLOQUE GESTION DE ALRMA CON VARIAS ALARMAS END */
-        
+       
         // Creamos un array multidimensional con los ID de paciente 
         // y los 3 datos a continuación por cada aparición 
         //Inicializamos el array
@@ -284,10 +307,6 @@
 
         // Creamos un contador para el indice de ID
         $index_count = 0;
-
-         //****AQUIIIII */
-         // TODO: -> Guardar el objeto del paciente o poderlo recuperar porque ahora solo guardamos el array
-         //****AQUIIIII */
 
         //Trabajamos sobre los pacientes con datos de Peso que vienen de esta consulta getAllWeightRegister
         $num_patients_data = count($patients_data);
@@ -436,6 +455,9 @@
            
         } // end for
 
+        // echo"<br>Acumulación alarmas: <br>";
+        // var_dump($any_alarm);
+
 
         // Ver si los id de posible edema están con los id de aumento de peso
         
@@ -492,27 +514,7 @@
         echo "danger: " .$numIndicators_dangerAlarm. "<br>";
         */
 
-        // Buscamos alarmas repetidas para ver si alguien ha marcado dos de las siguientes Q4..Q10
-        // Metemos todas las id de alarmas en un array y miramos los numeros que hay de cada alarma:
-       // $combinet_alarms = array_merge ($alarm_4_1, $alarm_4_2, $alarm_4_3, $alarm_4_4, $alarm_5_1, $alarm_5_2);
-
-       // echo "alarms_4_4: ";
-       // var_dump($alarma_4_4);
-       // echo "<br>";
-
-        //$count_combinet_alarms = array_count_values($combinet_alarms);
-
-        //var_dump($count_combinet_alarms);
-        //echo "combine alarms: ";
-        //var_dump ($combinet_alarms);
-        //echo "<br>";
-
-        //buscamos los valores que son 2 o más
-
         $numAlarmArray[] = 0; // Creamos un array con los números de alarma, el primero es 0 para contar desde el 1
-
-        //No alarms
-        $numAlarmArray[] = $num_patients_no_alterations;
 
         // Missing data
         $numAlarm_1_1 = count($alarm_1_1);
@@ -527,6 +529,17 @@
         $numAlarm1 = $numAlarm_1_1 + $numAlarm_1_2 + $numAlarm_1_3;
 
         $numAlarmArray[] = $numAlarm1;
+
+        // Guardamos las alarmas en any_alarm
+        $array_alarm_1_1 = array_ids($alarm_1_1);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_1_1);
+
+        $array_alarm_1_2 = array_ids($alarm_1_2);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_1_2);
+
+        $array_alarm_1_3 = array_ids($alarm_1_3);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_1_3);
+        
 
         // Information data
         $numAlarm_2_1 = count($alarm_2_1);
@@ -544,6 +557,19 @@
 
         $numAlarmArray[] = $numAlarm2;
 
+        // Guardamos las alarmas en any_alarm
+        $array_alarm_2_1 = array_ids($alarm_2_1);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_2_1);
+        
+        $array_alarm_2_2 = array_ids($alarm_2_2);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_2_2);
+
+        $array_alarm_2_3 = array_ids($alarm_2_3);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_2_3);
+
+        $array_alarm_2_4 = array_ids($alarm_2_4);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_2_4);
+
         // Añado estas alarmas
         $alarm_3_2 = $alarm_2kg_7days;
         // Warning alarm
@@ -558,9 +584,19 @@
 
         $numAlarmArray[] = $numAlarm3;
 
+        // Guardamos las alarmas en any_alarm
+        $array_alarm_3_1 = array_ids($alarm_3_1);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_3_1);
+
+        $array_alarm_3_2 = array_ids($alarm_3_2);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_3_2);
+
         // Añado estas alarmas
         $alarm_4_5 = $alarm_2kg_2days;
         $alarm_4_6 = $alarm_2kg_7days_edema;
+
+        // echo"<br>Acumulación alarmas: <br>";
+        //var_dump($any_alarm);
 
         //echo " alarm_2kg_7days: <b>".$alarm_2kg_2days ."</b><br>";
         //echo " Alarm_4_5: ".$alarm_4_5 ."<br>";
@@ -584,24 +620,65 @@
 
         $numAlarmArray[] = $numAlarm4;
 
+        $array_alarm_4_1 = array_ids($alarm_4_1);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_4_1);
+
+        $array_alarm_4_2 = array_ids($alarm_4_2);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_4_2);
+
+        $array_alarm_4_3 = array_ids($alarm_4_3);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_4_3);
+
+        $array_alarm_4_4 = array_ids($alarm_4_4);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_4_4);
+
+        $any_alarm = insert_any_alarm_array ($any_alarm, $alarm_4_5);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $alarm_4_6);
+
+        $alarm_5_3 = $alarmas_2_tipos;
+
         $alarm_5_4 = $alarm_2kg_2days_edema;
 
         // Danger alarm
         $numAlarm_5_1 = count($alarm_5_1);
         $numAlarm_5_2 = count($alarm_5_2);
-        $num_alarmas_2_tipos = count($alarmas_2_tipos);
-        $numAlarm_5_4 = count($alarm_2kg_2days_edema);
+        $numAlarm_5_3 = count($alarm_5_3);
+        $numAlarm_5_4 = count($alarm_5_4);
         
         $numAlarm_5_Array = array (0,
                                    $numAlarm_5_1,
                                    $numAlarm_5_2,
-                                   $num_alarmas_2_tipos,
+                                   $numAlarm_5_3,
                                    $numAlarm_5_4);
 
-        $numAlarm5 = $numAlarm_5_1 + $numAlarm_5_2 + $num_alarmas_2_tipos + $numAlarm_5_4;
+        $numAlarm5 = $numAlarm_5_1 + $numAlarm_5_2 + $numAlarm_5_3 + $numAlarm_5_4;
 
         $numAlarmArray[] = $numAlarm5;
 
+        $array_alarm_5_1 = array_ids($alarm_5_1);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_5_1);
+
+        $array_alarm_5_2 = array_ids($alarm_5_2);
+        $any_alarm = insert_any_alarm_array ($any_alarm, $array_alarm_5_2);
+
+        $any_alarm = insert_any_alarm_array ($any_alarm, $alarm_5_3);
+
+        $any_alarm = insert_any_alarm_array ($any_alarm, $alarm_5_4);
+
+        // Limpiamos el arrya de alarmas quitando los ids repetidos
+        $any_array_unique = array_unique($any_alarm);
+       
+        // Sacamos los IDs de all_patients
+        $all_patients_ids = array_ids($all_patients);
+
+        // Restamos comparamos los ids de all_patients con los de las alarmas acumuladas
+        
+        $patients_no_alterations = array_diff($all_patients_ids, $any_array_unique);
+        //var_dump($patients_no_alterations);
+
+        //No alarms
+        
+        $num_patients_no_alterations = count($patients_no_alterations);
 
         //Creamos la función que crea la tabla de información
         function _tableInfo ($_numAlarm, $_object ){
@@ -653,7 +730,7 @@
         } // End Function
         
         //Creamos la función que crea la tabla de información si no es un Objeto 
-        function _tableInfo2 ($_numAlarm, $_patient_alarm, $_all_patients){
+        function _tableInfo2 ($_patient_alarm, $_all_patients){
            
             $html = 
                 '<div class="table-responsive">
@@ -774,15 +851,17 @@
                         </thead>
                         <tbody>
                         ';
+                            //echo "Num Alarm: ". $_numAlarm ."<br>";
                             for ($j=0; $j < $_numAlarm; $j++){
 
                                 $_num_patients = count($_all_patients);
+                                //echo "Num Patient: ". $_num_patients ."<br>";
                                 for ($i = 0; $i < $_num_patients; $i++) {
                             
                                     $patient = (object)$_all_patients[$i];
 
-                                    //echo "<h1>Patient: ". $patient -> getId() ."</h1>";
-                                    //echo "<h1>Patient_alarm: ". $_patient_alarm[$j] ."</h1>";
+                                    //echo "Patient: ". $patient -> getId() ."<br>";
+                                    //echo "Patient_alarm: ". $_patient_alarm[$j] ."<br>";
 
                                     $id_patient = $patient -> getId();
 
@@ -806,6 +885,62 @@
                                     } // End if
                                 
                                 } // End for i
+
+                            } // End for j
+
+                        $html .='
+                        
+                        </tbody>
+                    </table>
+                </div>';
+           
+                echo $html;
+
+        } // End Function
+
+        //Creamos la función que crea la tabla de información si no es un Objeto y los pacientes son un array y no son alarmas
+        function _tableInfo5 ($_patient_alarm, $_all_patients){
+           
+            $html = 
+                '<div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>P1</th>
+                                <th>P2</th>
+                                <th>P3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        ';
+
+                            // Recorremos la lista de pacientes si alguno coincide con el de NO alarmas, se imprime
+                            $_num_patients = count($_all_patients);
+                            for ($j=0; $j < $_num_patients; $j++){
+
+                                    $patient = (object)$_all_patients[$j];
+
+                                    $id_patient = $patient -> getId();
+
+                                    if ($_patient_alarm[$j] == $id_patient){
+
+                                        $html .=
+                                        '<tr>
+                                            <td>
+                                                <a href= "index.php?controller=patients&amp;option=query_p1&amp;id='. $patient -> getId() .' "> '. $patient -> getIdString().'</a>
+                                            </td>
+                                            <td>
+                                                <a href= "index.php?controller=patients&amp;option=query_p1&amp;id='.  $patient -> getId() .' ">P1</a>
+                                            </td>
+                                            <td>
+                                                <a href= "index.php?controller=patients&amp;option=query_p2&amp;id='.  $patient -> getId() .' ">P2</a>
+                                            </td>
+                                            <td>
+                                                <a href= "index.php?controller=patients&amp;option=query_p3&amp;id='.  $patient -> getId() .' ">P3</a>
+                                            </td>
+                                        </tr>';
+                                    } // End if
 
                             } // End for j
 
@@ -857,6 +992,23 @@
                             } // End for
                             ?>
                             
+                        </div> 
+                        <!-- /.card-body -->
+
+                        <!-- card body -->
+                        <div class="card-body">
+                            <div class="my-2"></div>
+                            <h3>No Alarms:</h3>
+                            <!-- Generamos el botón de las NO Alarmas -->
+                            <p>
+                                <a href="#" class="btn btn-success btn-icon-split" data-toggle="collapse" data-target="#collapseNoAlarms" aria-expanded="true" aria-controls="collapseOneOne">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                                <span class="text"><?php echo "No Alterations: ". $num_patients_no_alterations ?></span>
+                                </a>
+                            </p>
+
                         </div> 
                         <!-- /.card-body -->
 
@@ -1021,7 +1173,7 @@
                         <div class="card-body">
                             <div class="information"></div>
                             <h3>Patients No Alarm:</h3>
-                            <?php _tableInfo3($all_patients);?>
+                            <?php _tableInfo5($patients_no_alterations, $all_patients);?>
                         <!-- card body -->   
                         </div>
                     </div>
@@ -1149,7 +1301,7 @@
                         <div class="card-body">
                             <div class="information"></div>
                             <h3>Patients <?php echo $yellow_02;?></h3>
-                            <?php _tableInfo2($numAlarm_3_2,$alarm_3_2,$all_patients);?>
+                            <?php _tableInfo2($alarm_3_2,$all_patients);?>
                         <!-- card body -->   
                         </div>
                     </div>
@@ -1220,7 +1372,7 @@
                             <div class="information"></div>
                             <h3>Patients <?php echo $orange_05;?></h3>
                             <?php echo "Alarma: ". $alarm_4_5." num: ".$numAlarm_4_5 ."<br>";?>
-                            <?php _tableInfo2($numAlarm_4_5, $alarm_4_5, $all_patients);?>
+                            <?php _tableInfo2($alarm_4_5, $all_patients);?>
                         <!-- card body -->   
                         </div>
                     </div>
@@ -1234,7 +1386,7 @@
                         <div class="card-body">
                             <div class="information"></div>
                             <h3>Patients <?php echo $orange_06;?></h3>
-                            <?php _tableInfo2($numAlarm_4_6, $alarm_4_6, $all_patients);?>
+                            <?php _tableInfo2($alarm_4_6, $all_patients);?>
                         <!-- card body -->   
                         </div>
                     </div>
@@ -1276,7 +1428,7 @@
                         <div class="card-body">
                             <div class="information"></div>
                             <h3>Patients: <?php echo $red_03;?></h3>
-                            <?php _tableInfo4($num_alarmas_2_tipos,$alarmas_2_tipos,$all_patients);?>
+                            <?php _tableInfo4($numAlarm_5_3,$alarm_5_3,$all_patients);?>
                         <!-- card body -->   
                         </div>
                     </div>
@@ -1295,7 +1447,7 @@
                         <div class="card-body">
                             <div class="information"></div>
                             <h3>Patients <?php echo $red_04;?></h3>
-                            <?php _tableInfo2($numAlarm_5_4,$alarm_5_4,$all_patients);?>
+                            <?php _tableInfo2($alarm_5_4,$all_patients);?>
                         <!-- card body -->   
                         </div>
                     </div>
