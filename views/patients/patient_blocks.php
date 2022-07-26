@@ -345,6 +345,17 @@
                 
                 break;
 
+            default:
+                // echo"Estoy en el chatbot 6<br>";
+                $patients_chatbot_time_stamp_analitica = $patients_chatbot_object -> getCreateTs();
+
+                #Creamos el objeto
+                $patients_chatbot_time_stamp_analitica_object =new DateTime($patients_chatbot_time_stamp_analitica);
+
+                $patients_chatbot_date_dd_mm_yyyy_format_analitica = $patients_chatbot_time_stamp_analitica_object->format("j/m/Y");
+                
+                // No lo guardamos en el chatbot de resultados solo lo utilizamos para el valor de los datos
+
         } // End Switch
 
         // Separamos las preguntas según cuestionario y preguta
