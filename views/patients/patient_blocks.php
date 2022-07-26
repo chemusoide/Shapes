@@ -214,20 +214,20 @@
     // En este caso nos vienen muchas líneas porque hay una por cada pregunta-respuesta
     $num_patients_chatbot = count($patients_chatbot);
     
-    // Inicializamos el array de fechas
-    $patients_chatbot_date_dd_mm_yyyy_raw = [];
+    // Inicializamos los arrays de fechas
+    $patients_chatbot_date_dd_mm_yyyy_raw_seguimiento = [];
+    $patients_chatbot_date_dd_mm_yyyy_raw_medica = [];
+    $patients_chatbot_date_dd_mm_yyyy_raw_contacto = [];
+    $patients_chatbot_date_dd_mm_yyyy_raw_cambio = [];
+    $patients_chatbot_date_dd_mm_yyyy_raw_ingresado = [];
+    $patients_chatbot_date_dd_mm_yyyy_raw_analitica = [];
 
-    // Recorremos todo el bloque para sacar los datos.
-    for ($i = 0; $i < $num_patients_chatbot; $i++) {
-
-        $patients_chatbot_object = (object)$patients_chatbot[$i];
-
-        //guardamos la fecha
-        $patients_chatbot_time_stamp = $patients_chatbot_object -> getCreateTs();
+    /*
+    function guardar_fecha_array ($array_de_guardado, $arrar_entrada) {
 
         #Creamos el objeto
-        $patients_chatbot_time_stamp_object =new DateTime($patients_chatbot_time_stamp);
-        
+        $patients_chatbot_time_stamp_object =new DateTime($arrar_entrada);
+
         // Lo vamos guardoad en el formato deseado en un array (quedan todas las líneas guardadas y por tanto hay repetido)
         // Lo que haremos es guardar el valor en una variable y comprarala con el último valor del array
         // Si existe no lo añadimos y si no existe lo añadimos:
@@ -236,10 +236,116 @@
         $temporal_date = $patients_chatbot_time_stamp_object->format("j/m/Y"); 
         //echo "Temporal Date: <h1>$temporal_date</h1>";
         // Buscamos en el array si existe la fecha si no existe lo guardamos
-        if (!in_array($temporal_date, $patients_chatbot_date_dd_mm_yyyy_raw, true)) {
+        if (!in_array($temporal_date, $array_de_guardado, true)) {
             //echo "<h1>NO EXISTE</h1>";
-            $patients_chatbot_date_dd_mm_yyyy_raw[] = $temporal_date;
+            $array_de_guardado[] = $temporal_date;
         }// end if
+
+
+    } // End function guardar_fecha_array
+*/
+    // Recorremos todo el bloque para sacar los datos.
+    for ($i = 0; $i < $num_patients_chatbot; $i++) {
+
+        $patients_chatbot_object = (object)$patients_chatbot[$i];
+
+        //guardamos la fecha
+        //$patients_chatbot_time_stamp = $patients_chatbot_object -> getCreateTs();
+
+        //guardamos la fecha por cada chatbot
+        $numero_pregunta = $patients_chatbot_object -> getPregunta();
+
+        switch ($numero_pregunta) {
+
+            // Como el flujo de preguntas puede ser las 3 primeras o las 12 del primer bloque de seguimeinto
+            // y se puede repetir día, guardamos la fecha cada ve que hay la pregunta 2.
+            case ($numero_pregunta == 2):
+                // echo"Estoy en el chatbot 1<br>";
+                $patients_chatbot_time_stamp_seguimiento = $patients_chatbot_object -> getCreateTs();
+                
+                #Creamos el objeto
+                $patients_chatbot_time_stamp_seguimiento_object =new DateTime($patients_chatbot_time_stamp_seguimiento);
+
+                $patients_chatbot_date_dd_mm_yyyy_format_seguimiento = $patients_chatbot_time_stamp_seguimiento_object->format("j/m/Y"); 
+
+                // Lo vamos guardoad en el formato deseado en un array 
+                $patients_chatbot_date_dd_mm_yyyy_raw_seguimiento[] = $patients_chatbot_date_dd_mm_yyyy_format_seguimiento; 
+               
+                break;
+
+            // Como se puede repetir día, guardamos la fecha cada ve que hay la pregunta 16, 
+            case ($numero_pregunta == 16):
+                // echo"Estoy en el chatbot 2<br>";
+
+                $patients_chatbot_time_stamp_medica = $patients_chatbot_object -> getCreateTs();
+
+                //Creamos el objeto
+                $patients_chatbot_time_stamp_medica_object =new DateTime($patients_chatbot_time_stamp_medica);
+
+                $patients_chatbot_date_dd_mm_yyyy_format_medica = $patients_chatbot_time_stamp_medica_object->format("j/m/Y"); 
+
+                // Lo vamos guardoad en el formato deseado en un array 
+                $patients_chatbot_date_dd_mm_yyyy_raw_medica[] = $patients_chatbot_date_dd_mm_yyyy_format_medica;
+                 
+                break;
+
+            case 22:
+                // echo"Estoy en el chatbot 3<br>";
+                $patients_chatbot_time_stamp_contacto = $patients_chatbot_object -> getCreateTs();
+
+                #Creamos el objeto
+                $patients_chatbot_time_stamp_contacto_object =new DateTime($patients_chatbot_time_stamp_contacto);
+
+                $patients_chatbot_date_dd_mm_yyyy_format_contacto = $patients_chatbot_time_stamp_contacto_object->format("j/m/Y");
+
+                // Lo vamos guardoad en el formato deseado en un array 
+                $patients_chatbot_date_dd_mm_yyyy_raw_contacto[] = $patients_chatbot_date_dd_mm_yyyy_format_contacto; 
+                
+                break;
+
+            case 23:
+                // echo"Estoy en el chatbot 4<br>";
+                $patients_chatbot_time_stamp_cambio = $patients_chatbot_object -> getCreateTs();
+
+                #Creamos el objeto
+                $patients_chatbot_time_stamp_cambio_object =new DateTime($patients_chatbot_time_stamp_cambio);
+
+                $patients_chatbot_date_dd_mm_yyyy_format_cambio = $patients_chatbot_time_stamp_cambio_object->format("j/m/Y"); 
+
+                // Lo vamos guardoad en el formato deseado en un array 
+                $patients_chatbot_date_dd_mm_yyyy_raw_cambio[] = $patients_chatbot_date_dd_mm_yyyy_format_cambio;
+                
+                break;
+
+            case 24:
+                // echo"Estoy en el chatbot 5<br>";
+                $patients_chatbot_time_stamp_ingresado = $patients_chatbot_object -> getCreateTs();
+
+                #Creamos el objeto
+                $patients_chatbot_time_stamp_ingresado_object =new DateTime($patients_chatbot_time_stamp_ingresado);
+
+                $patients_chatbot_date_dd_mm_yyyy_format_ingresado = $patients_chatbot_time_stamp_ingresado_object->format("j/m/Y");
+
+                // Lo vamos guardoad en el formato deseado en un array
+                $patients_chatbot_date_dd_mm_yyyy_raw_ingresado[] = $patients_chatbot_date_dd_mm_yyyy_format_ingresado;
+
+                break;
+
+            case 25:
+                // echo"Estoy en el chatbot 6<br>";
+                $patients_chatbot_time_stamp_analitica = $patients_chatbot_object -> getCreateTs();
+
+                #Creamos el objeto
+                $patients_chatbot_time_stamp_analitica_object =new DateTime($patients_chatbot_time_stamp_analitica);
+
+                $patients_chatbot_date_dd_mm_yyyy_format_analitica = $patients_chatbot_time_stamp_analitica_object->format("j/m/Y");
+
+                // Lo vamos guardoad en el formato deseado en un array
+                $patients_chatbot_date_dd_mm_yyyy_raw_analitica[] = $patients_chatbot_date_dd_mm_yyyy_format_analitica; 
+                
+                break;
+
+        } // End Switch
 
         // Separamos las preguntas según cuestionario y preguta
         // empezamos por la pregunta 2 porque la 1 es irrelevante.
@@ -247,112 +353,112 @@
         // Respuesta a cuestionario 1 respuesta 2
         if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "2"){
 
-            $patients_chatbot_respuesta_1_2[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_1_2[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_seguimiento;
 
         } // end if
 
         // Respuesta a cuestionario 1 respuesta 3
         if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "3"){
 
-            $patients_chatbot_respuesta_1_3[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_1_3[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_seguimiento;
             
         } // end if
         
         // Respuesta a cuestionario 1 respuesta 4
         if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "4"){
                                         
-            $patients_chatbot_respuesta_1_4[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_1_4[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_seguimiento;
             
         } // end if
 
         // Respuesta a cuestionario 1 respuesta 5
         if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "5"){
 
-            $patients_chatbot_respuesta_1_5[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_1_5[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_seguimiento;
             
         } // end if
         
         // Respuesta a cuestionario 1 respuesta 6
         if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "6"){
 
-            $patients_chatbot_respuesta_1_6[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_1_6[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_seguimiento;
             
         } // end if
 
         // Respuesta a cuestionario 1 respuesta 7
         if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "7"){
 
-            $patients_chatbot_respuesta_1_7[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_1_7[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_seguimiento;
             
         } // end if
 
         // Respuesta a cuestionario 1 respuesta 8
         if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "8"){
 
-            $patients_chatbot_respuesta_1_8[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_1_8[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_seguimiento;
             
         } // end if
 
         // Respuesta a cuestionario 1 respuesta 9
         if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "9"){
 
-            $patients_chatbot_respuesta_1_9[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_1_9[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_seguimiento;
             
         } // end if
 
         // Respuesta a cuestionario 1 respuesta 10
         if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "10"){
 
-            $patients_chatbot_respuesta_1_10[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_1_10[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_seguimiento;
             
         } // end if
 
         // Respuesta a cuestionario 1 respuesta 11
         if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "11"){
 
-            $patients_chatbot_respuesta_1_11[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_1_11[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_seguimiento;
             
         } // end if
 
         // Respuesta a cuestionario 1 respuesta 12
         if ($patients_chatbot_object -> getId_cuestionario() == "1" && $patients_chatbot_object -> getPregunta() == "12"){
 
-            $patients_chatbot_respuesta_1_12[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_1_12[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_seguimiento;
             
         } // end if
 
         // Respuesta a cuestionario 2 respuesta 2
         if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "17"){
 
-            $patients_chatbot_respuesta_2_2[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_2_2[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_medica;
             
         } // end if
 
         // Respuesta a cuestionario 2 respuesta 3
         if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "18"){
 
-            $patients_chatbot_respuesta_2_3[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_2_3[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_medica;
             
         } // end if
 
         // Respuesta a cuestionario 2 respuesta 4
         if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "19"){
 
-            $patients_chatbot_respuesta_2_4[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_2_4[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_medica;
             
         } // end if
 
         // Respuesta a cuestionario 2 respuesta 5
         if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "20"){
 
-            $patients_chatbot_respuesta_2_5[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_2_5[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_medica;
             
         } // end if
 
         // Respuesta a cuestionario 2 respuesta 6
         if ($patients_chatbot_object -> getId_cuestionario() == "2" && $patients_chatbot_object -> getPregunta() == "21"){
 
-            $patients_chatbot_respuesta_2_6[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_2_6[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_medica;
             
         } // end if
 
@@ -368,28 +474,28 @@
         // Respuesta a cuestionario 3 respuesta 1
         if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "22"){
 
-            $patients_chatbot_respuesta_3_1[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_3_1[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_contacto;
             
         } // end if
 
         // Respuesta a cuestionario 3 respuesta 2
         if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "23"){
 
-            $patients_chatbot_respuesta_3_2[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_3_2[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_cambio;
             
         } // end if
 
         // Respuesta a cuestionario 3 respuesta 3
         if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "24"){
 
-            $patients_chatbot_respuesta_3_3[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_3_3[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_ingresado;
             
         } // end if
 
         // Respuesta a cuestionario 3 respuesta 4
         if ($patients_chatbot_object -> getId_cuestionario() == "3" && $patients_chatbot_object -> getPregunta() == "25"){
 
-            $patients_chatbot_respuesta_3_4[] = $patients_chatbot_object -> getRespuesta();
+            $patients_chatbot_respuesta_3_4[] = $patients_chatbot_object -> getRespuesta() ."-". $patients_chatbot_date_dd_mm_yyyy_format_analitica;
             
         } // end if
 

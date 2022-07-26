@@ -189,4 +189,91 @@
     }
     // End Funcion edad
 
+
+    // Funcion que devuelve un array con tres resultados respuesta dependiendo de la fecha en la posición de fecha que corresponde 
+    function resultado_posicion_segun_fecha ($rpsf_fecha1, $rpsf_fecha2, $rpsf_fecha3, $rpsf_p_fecha_d1, $rpsf_p_fecha_d2, $rpsf_p_fecha_d3, $rpsf_respuesta_1, $rpsf_respuesta_2, $rpsf_respuesta_3) {
+
+        if ($rpsf_p_fecha_d1 == $rpsf_fecha1){
+    
+            $rpsf_resultado_retorno_d1 =  $rpsf_respuesta_1;
+    
+            if ($rpsf_p_fecha_d2 == $rpsf_fecha2){
+    
+                $rpsf_resultado_retorno_d2 =  $rpsf_respuesta_2;
+    
+                if ($rpsf_p_fecha_d3 == $rpsf_fecha3){
+    
+                    $rpsf_resultado_retorno_d3 =  $rpsf_respuesta_3;
+    
+                } else{
+    
+                    $rpsf_resultado_retorno_d3 = "N/A";
+    
+                } // End if 3
+    
+            } else if ($rpsf_p_fecha_d2 == $rpsf_fecha3) {
+    
+                $rpsf_resultado_retorno_d2 = "N/A";
+    
+                $rpsf_resultado_retorno_d3 =  $rpsf_respuesta_3;
+    
+            } else {
+    
+                $rpsf_resultado_retorno_d2 = "N/A";
+                $rpsf_resultado_retorno_d3 = "N/A";
+    
+    
+            } // Edn if 2
+    
+        }else if ($rpsf_p_fecha_d1 == $rpsf_fecha2){
+    
+            $rpsf_resultado_retorno_d1 = "N/A";
+    
+            if ($rpsf_p_fecha_d2 == $rpsf_fecha2){
+    
+                $rpsf_resultado_retorno_d2 =  $rpsf_respuesta_2;
+    
+                if ($rpsf_p_fecha_d3 == $rpsf_fecha3){
+    
+                    $rpsf_resultado_retorno_d3 =  $rpsf_respuesta_3;
+    
+                } else{
+    
+                    $rpsf_resultado_retorno_d3 = "N/A";
+    
+                } // End if 3
+    
+            } else if ($rpsf_p_fecha_d2 == $rpsf_fecha3) {
+    
+                $rpsf_resultado_retorno_d2 = "N/A";
+    
+                $rpsf_resultado_retorno_d3 =  $rpsf_respuesta_3;
+    
+            } else {
+    
+                $rpsf_resultado_retorno_d2 = "N/A";
+                $rpsf_resultado_retorno_d3 = "N/A";
+    
+    
+            } // Edn if 2
+    
+        } else if ($rpsf_p_fecha_d1 == $rpsf_fecha3){
+    
+            $rpsf_resultado_retorno_d1 = "N/A";
+            $rpsf_resultado_retorno_d2 = "N/A";
+    
+            $rpsf_resultado_retorno_d3 =  $rpsf_respuesta_1;
+    
+        } else {
+            $rpsf_resultado_retorno_d1 = "N/A";
+            $rpsf_resultado_retorno_d2 = "N/A";
+            $rpsf_resultado_retorno_d3 = "N/A";
+        } // End if// End if
+    
+        $rpsf_array_resultados = [$rpsf_resultado_retorno_d1, $rpsf_resultado_retorno_d2, $rpsf_resultado_retorno_d3];
+        
+        return $rpsf_array_resultados;
+    
+    } // End function resultado_posicion_segun_fecha
+
 ?>
