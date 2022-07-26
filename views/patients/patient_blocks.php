@@ -289,6 +289,20 @@
                  
                 break;
 
+            case ($numero_pregunta >= 17 && $numero_pregunta <= 21):
+                // echo"Estoy en el chatbot 2<br>";
+
+                $patients_chatbot_time_stamp_medica = $patients_chatbot_object -> getCreateTs();
+
+                //Creamos el objeto
+                $patients_chatbot_time_stamp_medica_object =new DateTime($patients_chatbot_time_stamp_medica);
+
+                $patients_chatbot_date_dd_mm_yyyy_format_medica = $patients_chatbot_time_stamp_medica_object->format("j/m/Y"); 
+
+                // No lo guardamos en el chatbot de resultados solo lo utilizamos para el valor de los datos
+                    
+                break;
+
             case 22:
                 // echo"Estoy en el chatbot 3<br>";
                 $patients_chatbot_time_stamp_contacto = $patients_chatbot_object -> getCreateTs();
@@ -352,7 +366,7 @@
                 #Creamos el objeto
                 $patients_chatbot_time_stamp_analitica_object =new DateTime($patients_chatbot_time_stamp_analitica);
 
-                $patients_chatbot_date_dd_mm_yyyy_format_analitica = $patients_chatbot_time_stamp_analitica_object->format("j/m/Y");
+                $patients_chatbot_date_dd_mm_yyyy_format_seguimiento = $patients_chatbot_time_stamp_analitica_object->format("j/m/Y");
                 
                 // No lo guardamos en el chatbot de resultados solo lo utilizamos para el valor de los datos
 
