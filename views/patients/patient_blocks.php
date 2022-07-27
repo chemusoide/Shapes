@@ -258,7 +258,10 @@
         switch ($numero_pregunta) {
 
             // Como el flujo de preguntas puede ser las 3 primeras o las 12 del primer bloque de seguimeinto
-            // y se puede repetir día, guardamos la fecha cada ve que hay la pregunta 2.
+            // y se puede repetir día, guardamos la fecha cada ve que hay la pregunta 2 para el grupo 1 Seguimiento
+            // Guardamos cada vez que sale la pregunta 17 corresponiente al grupo 2 Médica
+            // Guardamos cada vez que sale de los siguientes grupos ya que pertenencen al chat 3 pero son independientes
+            // finalmente también usamos las fechas para añadirlas al dato ya así poder hacer seguimiento
             case ($numero_pregunta == 2):
                 // echo"Estoy en el chatbot 1<br>";
                 $patients_chatbot_time_stamp_seguimiento = $patients_chatbot_object -> getCreateTs();
@@ -271,6 +274,20 @@
                 // Lo vamos guardoad en el formato deseado en un array 
                 $patients_chatbot_date_dd_mm_yyyy_raw_seguimiento[] = $patients_chatbot_date_dd_mm_yyyy_format_seguimiento; 
                
+                break;
+
+            // Para seguimiento
+            case ($numero_pregunta >= 3 && $numero_pregunta <= 12 ):
+                // echo"Estoy en el chatbot 1<br>";
+                $patients_chatbot_time_stamp_seguimiento = $patients_chatbot_object -> getCreateTs();
+                
+                #Creamos el objeto
+                $patients_chatbot_time_stamp_seguimiento_object =new DateTime($patients_chatbot_time_stamp_seguimiento);
+
+                $patients_chatbot_date_dd_mm_yyyy_format_seguimiento = $patients_chatbot_time_stamp_seguimiento_object->format("j/m/Y"); 
+
+                // No lo guardamos en el chatbot de resultados solo lo utilizamos para el valor de los datos
+         
                 break;
 
             // Como se puede repetir día, guardamos la fecha cada ve que hay la pregunta 16, 
@@ -289,6 +306,7 @@
                  
                 break;
 
+            // Para seguimiento
             case ($numero_pregunta >= 17 && $numero_pregunta <= 21):
                 // echo"Estoy en el chatbot 2<br>";
 
@@ -358,17 +376,6 @@
                 $patients_chatbot_date_dd_mm_yyyy_raw_analitica[] = $patients_chatbot_date_dd_mm_yyyy_format_analitica; 
                 
                 break;
-
-            default:
-                // echo"Estoy en el chatbot 6<br>";
-                $patients_chatbot_time_stamp_analitica = $patients_chatbot_object -> getCreateTs();
-
-                #Creamos el objeto
-                $patients_chatbot_time_stamp_analitica_object =new DateTime($patients_chatbot_time_stamp_analitica);
-
-                $patients_chatbot_date_dd_mm_yyyy_format_seguimiento = $patients_chatbot_time_stamp_analitica_object->format("j/m/Y");
-                
-                // No lo guardamos en el chatbot de resultados solo lo utilizamos para el valor de los datos
 
         } // End Switch
 

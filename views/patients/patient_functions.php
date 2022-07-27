@@ -229,13 +229,13 @@
     
             $rpsf_resultado_retorno_d1 = "N/A";
     
-            if ($rpsf_p_fecha_d2 == $rpsf_fecha2){
+            if ($rpsf_p_fecha_d1 == $rpsf_fecha2){
     
-                $rpsf_resultado_retorno_d2 =  $rpsf_respuesta_2;
+                $rpsf_resultado_retorno_d2 =  $rpsf_respuesta_1;
     
-                if ($rpsf_p_fecha_d3 == $rpsf_fecha3){
+                if ($rpsf_p_fecha_d2 == $rpsf_fecha3){
     
-                    $rpsf_resultado_retorno_d3 =  $rpsf_respuesta_3;
+                    $rpsf_resultado_retorno_d3 =  $rpsf_respuesta_2;
     
                 } else{
     
@@ -243,11 +243,11 @@
     
                 } // End if 3
     
-            } else if ($rpsf_p_fecha_d2 == $rpsf_fecha3) {
+            } else if ($rpsf_p_fecha_d1 == $rpsf_fecha3) {
     
                 $rpsf_resultado_retorno_d2 = "N/A";
     
-                $rpsf_resultado_retorno_d3 =  $rpsf_respuesta_3;
+                $rpsf_resultado_retorno_d3 =  $rpsf_respuesta_1;
     
             } else {
     
