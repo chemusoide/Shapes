@@ -115,6 +115,7 @@
         /**
          * No hay datos en la pregunta de ejercicio o en la de dieta en los últimos tres días ->
          * Negada de (Hay datos en la pregunta de dieta y en la de ejercicio en los últimos 3 días):
+         * Aunque es Q8 la pregunta tiene ID 9 porque hay una pregunta inicial de si se quiere realizar el test
          * @return Ambigous <multitype:, PatientsData>
          */
         public function getAlarm_1_1() {
@@ -129,7 +130,7 @@
                         SELECT patients.id_string FROM patients JOIN patients_chatbot 
                             ON patients.id = patients_chatbot.id_patient
                         WHERE (
-                            (patients_chatbot.pregunta = 8 AND idcuestionario = 1 AND patients_chatbot.respuesta IS NOT NULL) AND
+                            (patients_chatbot.pregunta = 9 AND idcuestionario = 1 AND patients_chatbot.respuesta IS NOT NULL) AND
                 
                             (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
                 
@@ -164,8 +165,8 @@
         } // End function getAlarm_1_1
 
         /**
-         *  NO hay datos de peso registrados del dispositivo tres días antes -->
-         *  Negadad de (Hay datos de peso los tres últimos días)
+         *  NO hay datos de peso registrados del dispositivo dos días antes -->
+         *  Negadad de (Hay datos de peso los dos últimos días)
          * @return Ambigous <multitype:, PatientsData>
          */
         public function getAlarm_1_2() {
@@ -182,7 +183,7 @@
                         WHERE (
                             (patients_data.metric = 'body_weight') AND
                     
-                            (patients_data.record_date + 2592000) >= CURRENT_TIMESTAMP
+                            (patients_data.record_date + 1728000) >= CURRENT_TIMESTAMP
                         )
                 
                     )
@@ -215,8 +216,8 @@
         } // End function getAlarm_1_2
 
         /**
-         * NO hay datos registrados del dispositivo tres días antes -->
-         * Negadad de (Hay datos los tres últimos días)
+         * NO hay datos registrados del dispositivo 1 días antes Como solo hay peso es similar a la anterior -->
+         * Negadad de (Hay datos de peso el último día)
          * @return Ambigous <multitype:, PatientsData>
          */
         public function getAlarm_1_3() {
@@ -227,15 +228,17 @@
 
             $rs = $db->Execute(
                 "SELECT *
-                    FROM patients WHERE patients.id_string NOT IN (
-                        SELECT patients.id_string FROM patients JOIN patients_chatbot 
-                            ON patients.id = patients_chatbot.id_patient
-                        WHERE (
-                            (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
-                    
-                        )
+                FROM patients WHERE patients.id_string NOT IN (
+                    SELECT patients.id_string FROM patients JOIN patients_data 
+                        ON patients.id = patients_data.id_patient
+                    WHERE (
+                        (patients_data.metric = 'body_weight') AND
+                
+                        (patients_data.record_date + 864000) >= CURRENT_TIMESTAMP
                     )
-               " 
+            
+                )
+           " 
             );
             
             while (!$rs->EOF) {
