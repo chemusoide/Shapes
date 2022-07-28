@@ -130,9 +130,9 @@
                         SELECT patients.id_string FROM patients JOIN patients_chatbot 
                             ON patients.id = patients_chatbot.id_patient
                         WHERE (
-                            (patients_chatbot.pregunta = 9 AND idcuestionario = 1 AND patients_chatbot.respuesta IS NOT NULL) AND
+                            (patients_chatbot.pregunta = 9) AND
                 
-                            (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                            (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                 
                         )
                     )
@@ -183,7 +183,8 @@
                         WHERE (
                             (patients_data.metric = 'body_weight') AND
                     
-                            (patients_data.record_date + 1728000) >= CURRENT_TIMESTAMP
+                            (patients_data.record_date >= (NOW() - INTERVAL 2 DAY))
+
                         )
                 
                     )
@@ -234,7 +235,7 @@
                     WHERE (
                         (patients_data.metric = 'body_weight') AND
                 
-                        (patients_data.record_date + 864000) >= CURRENT_TIMESTAMP
+                        (patients_data.record_date >= (NOW() - INTERVAL 1 DAY))
                     )
             
                 )
@@ -280,9 +281,9 @@
                 "SELECT * FROM patients JOIN patients_chatbot 
                     ON patients.id = patients_chatbot.id_patient
                 WHERE (
-                    (patients_chatbot.pregunta = 25 AND idcuestionario = 3 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
+                    (patients_chatbot.pregunta = 25 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
-                    (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                    (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
             
                 )
                 " 
@@ -329,9 +330,9 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.id_patient
                 WHERE (
-                    (patients_chatbot.pregunta = 22 AND idcuestionario = 3 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
+                    (patients_chatbot.pregunta = 22 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
-                    (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                    (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
             
                 )
                 " 
@@ -376,9 +377,9 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.id_patient
                 WHERE (
-                    (patients_chatbot.pregunta = 24 AND idcuestionario = 3 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
+                    (patients_chatbot.pregunta = 24 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
-                    (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                    (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
             
                 )
                 " 
@@ -423,9 +424,9 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.id_patient
                 WHERE (
-                    (patients_chatbot.pregunta = 23 AND idcuestionario = 3 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
+                    (patients_chatbot.pregunta = 23 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
-                    (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                    (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
             
                 )
                 " 
@@ -470,9 +471,9 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.id_patient
                 WHERE (
-                    (patients_chatbot.pregunta = 3 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'Peor') AND
+                    (patients_chatbot.pregunta = 3 AND patients_chatbot.respuesta = 'Peor') AND
             
-                    (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                    (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
             
                 )
                 " 
@@ -517,9 +518,9 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.id_patient
                 WHERE (
-                    (patients_chatbot.pregunta = 11 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
+                    (patients_chatbot.pregunta = 11 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
-                    (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                    (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
             
                 )
                 " 
@@ -564,9 +565,9 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.id_patient
                 WHERE (
-                    (patients_chatbot.pregunta = 10 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'menos') AND
+                    (patients_chatbot.pregunta = 10 AND patients_chatbot.respuesta = 'menos') AND
             
-                    (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                    (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
             
                 )
                 " 
@@ -611,9 +612,9 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.id_patient
                 WHERE (
-                    (patients_chatbot.pregunta = 8 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'No') AND
+                    (patients_chatbot.pregunta = 8 AND patients_chatbot.respuesta = 'No') AND
             
-                    (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                    (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
             
                 )
                 " 
@@ -658,9 +659,9 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.id_patient
                 WHERE (
-                    (patients_chatbot.pregunta = 7 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
+                    (patients_chatbot.pregunta = 7 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
-                    (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                    (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
             
                 )
                 " 
@@ -705,9 +706,9 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.id_patient
                 WHERE (
-                    (patients_chatbot.pregunta = 6 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
+                    (patients_chatbot.pregunta = 6 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
-                    (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                    (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
             
                 )
                 " 
@@ -752,9 +753,9 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.id_patient
                 WHERE (
-                    (patients_chatbot.pregunta = 5 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'No') AND
+                    (patients_chatbot.pregunta = 5 AND patients_chatbot.respuesta = 'No') AND
             
-                    (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                    (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
             
                 )
                 " 
@@ -811,50 +812,50 @@
                     ON patients.id = patients_chatbot.id_patient
                     WHERE (
                             (
-                                (patients_chatbot.pregunta = 5 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                                (patients_chatbot.pregunta = 5 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             ) OR
 
                             (
-                                (patients_chatbot.pregunta = 6 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                                (patients_chatbot.pregunta = 6 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             ) OR
                             (
-                                (patients_chatbot.pregunta = 7 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                                (patients_chatbot.pregunta = 7 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
-                            
-                            ) OR
-
-                            (
-                                (patients_chatbot.pregunta = 8 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
-                    
-                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             ) OR
 
                             (
-                                (patients_chatbot.pregunta = 10 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'Menos' ) AND
+                                (patients_chatbot.pregunta = 8 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             ) OR
 
                             (
-                                (patients_chatbot.pregunta = 11 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                                (patients_chatbot.pregunta = 10 AND patients_chatbot.respuesta = 'Menos' ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             ) OR
 
                             (
-                                (patients_chatbot.pregunta = 12 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                                (patients_chatbot.pregunta = 11 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) <= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
+                            
+                            ) OR
+
+                            (
+                                (patients_chatbot.pregunta = 12 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             )
                         
@@ -901,9 +902,9 @@
                 "SELECT patients.id_string FROM patients JOIN patients_chatbot 
                 ON patients.id = patients_chatbot.id_patient
                 WHERE (
-                    (patients_chatbot.pregunta = 2 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'peor' || patients_chatbot.respuesta = 'igual') ) AND
+                    (patients_chatbot.pregunta = 2 AND (patients_chatbot.respuesta = 'peor' || patients_chatbot.respuesta = 'igual') ) AND
             
-                    (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                    (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
             
                 )
                 " 
