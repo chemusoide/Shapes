@@ -133,6 +133,7 @@
          * Prueba <=
          * Real >=
          */
+
         public function getAlarm_5_3_chatbot() {
 
             $db = GeneralDAO::getConnection();
@@ -144,50 +145,57 @@
                     ON patients.id = patients_chatbot.id_patient
                     WHERE (
                             (
-                                (patients_chatbot.pregunta = 5 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                                (patients_chatbot.pregunta = 4 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             ) OR
 
                             (
-                                (patients_chatbot.pregunta = 6 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                                (patients_chatbot.pregunta = 5 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
-                            
-                            ) OR
-                            (
-                                (patients_chatbot.pregunta = 7 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
-                    
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             ) OR
 
                             (
-                                (patients_chatbot.pregunta = 8 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                                (patients_chatbot.pregunta = 6 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
+                            
+                            ) OR
+                            (
+                                (patients_chatbot.pregunta = 7 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             ) OR
 
                             (
-                                (patients_chatbot.pregunta = 10 AND idcuestionario = 1 AND patients_chatbot.respuesta = 'Menos' ) AND
+                                (patients_chatbot.pregunta = 8 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             ) OR
 
                             (
-                                (patients_chatbot.pregunta = 11 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                                (patients_chatbot.pregunta = 10 AND patients_chatbot.respuesta = 'Menos' ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             ) OR
 
                             (
-                                (patients_chatbot.pregunta = 12 AND idcuestionario = 1 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                                (patients_chatbot.pregunta = 11 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     
-                                (patients_chatbot.create_ts + 2592000) >= CURRENT_TIMESTAMP
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
+                            
+                            ) OR
+
+                            (
+                                (patients_chatbot.pregunta = 12 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             )
                         
@@ -216,7 +224,7 @@
 
             return $result;
 
-        } // End function getAlarm_5_2
+        } // End function getAlarm_5_3_chatbot
 
     } // End Class
 

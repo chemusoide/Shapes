@@ -801,6 +801,8 @@
          * Prueba <=
          * Real >=
          */
+
+         //OJO este en principio no se usa, utilizamos el de patients_chatbotDAO
         public function getAlarm_5_3() {
 
             $db = GeneralDAO::getConnection();
@@ -811,6 +813,13 @@
                 "SELECT * FROM patients JOIN patients_chatbot 
                     ON patients.id = patients_chatbot.id_patient
                     WHERE (
+                            (
+                                (patients_chatbot.pregunta = 4 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
+                    
+                                (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
+                            
+                            ) OR
+
                             (
                                 (patients_chatbot.pregunta = 5 AND (patients_chatbot.respuesta = 'Sí' || patients_chatbot.respuesta = 'Si') ) AND
                     

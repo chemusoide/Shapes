@@ -224,41 +224,43 @@
         // si el idcuestionario y pregunta es distinto a los existente lo guardamos en un array (id_usu-cuestionario-pregunta)
         // luego contamos en el array los id si tiene más de una alarma lo guardamos en la tabla array_id_patient_2alarms
         $num_alarms_5_3_chatbot = count($alarm_5_3_chatbot);
-
-        $array_patient_cuestionario_pregunta = []; // Inicializamos array
+        //echo"numero: $num_alarms_5_3_chatbot<br>";
+        // -> $array_patient_cuestionario_pregunta = []; // Inicializamos array
+        $array_patient_pregunta = []; // Inicializamos array
         $array_patient_cantidad = []; // Inicializamos array
-       
         // recorremos las alarmas y verificamos el identificador para asegurarnos que no hay repetidos
-        // para ello creamo un id con id_patient-id_cuestionario-pregunta
+        // para ello creamo un id con id_patient-pregunta
         // si se repite el ID no lo guardamos ya que hará referencia a la misma alarma en otro momento
         for ($i = 0; $i < $num_alarms_5_3_chatbot; $i++) {
 
             $conflicting_alarms = (object) $alarm_5_3_chatbot[$i];
 
             $id_patient_alarm_5_3 = $conflicting_alarms -> getId_patient();
-            $id_cuestionario_alarm_5_3 = $conflicting_alarms -> getId_cuestionario();
+            // -> $id_cuestionario_alarm_5_3 = $conflicting_alarms -> getId_cuestionario();
             $id_pregunta_alarm_5_3 = $conflicting_alarms -> getPregunta();
 
-            $identificador = $id_patient_alarm_5_3."-".$id_cuestionario_alarm_5_3."-".$id_pregunta_alarm_5_3;
+            $identificador = $id_patient_alarm_5_3."-".$id_pregunta_alarm_5_3;
+            // -> $identificador = $id_patient_alarm_5_3."-".$id_cuestionario_alarm_5_3."-".$id_pregunta_alarm_5_3;
             //echo "alarma ID cuestionario: $identificador <br>";
 
             // Si no existe el identificador lo añadimos
-            if (!in_array($identificador,$array_patient_cuestionario_pregunta)){
-                $array_patient_cuestionario_pregunta[] = $identificador;
+            if (!in_array($identificador,$array_patient_pregunta)){
+                $array_patient_pregunta[] = $identificador;
             } // end if
 
         } // End for
 
         // Separamos con explode el ID de usuario (ya que sabemos que no corresponde a la misma alarma)
         // revisamos si en el array está, si está ponemos un +1 al contador si no está lo añadimos
-        $num_patient_cuestionario_pregunta = count($array_patient_cuestionario_pregunta);
+        $num_patient_pregunta = count($array_patient_pregunta);
+        // -> $array_patient_cuestionario_pregunta;
         
-        for ($i=0; $i<$num_patient_cuestionario_pregunta; $i++){
+        for ($i=0; $i<$num_patient_pregunta; $i++){
 
-            $patient_separado_3_trozos = explode ("-", $array_patient_cuestionario_pregunta[$i]);
-            //echo "ID Patient 3 trozos: $patient_separado_3_trozos[0]<br>";
+            $patient_separado_2_trozos = explode ("-", $array_patient_pregunta[$i]);
+            //echo "ID Patient 3 trozos: $patient_separado_2_trozos[0]<br>";
 
-            $id_patient_separado[] = $patient_separado_3_trozos[0];
+            $id_patient_separado[] = $patient_separado_2_trozos[0];
             //echo "ID Patient: $id_patient_separado<br>";
 
         } // End for
