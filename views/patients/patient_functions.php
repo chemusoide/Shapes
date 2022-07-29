@@ -45,6 +45,10 @@
                     $text_color = "text-success";
                     break;
 
+                case "mejor":
+                    $text_color = "text-success";
+                    break;
+
                 case "Menos":
                     $text_color = "text-success";
                     break;
@@ -54,6 +58,10 @@
                     break;
                 
                 case "Igual":
+                    $text_color = "text-warning";
+                    break;
+
+                case "igual":
                     $text_color = "text-warning";
                     break;
 
@@ -70,6 +78,10 @@
                     break;
 
                 case "NA":
+                    $text_color = "text-primary";
+                    break;
+            
+                case "N/A":
                     $text_color = "text-primary";
                     break;
                         
@@ -96,6 +108,9 @@
                 case "S&iacute;":
                     $text_color = "text-danger";
                     break;
+
+                default:
+                    $text_color = "text-primary";
 
             } // End switch
 
