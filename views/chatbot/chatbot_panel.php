@@ -504,8 +504,8 @@
 
         $numIndicators_missingdata = count($missingdata_array) - 1; //contamos el número de nombres de datos -1 para descartar n/a
         $numIndicators_newinformation = count($newinformation_array) - 1; //contamos el número de nombres de datos -1 para descartar n/a
-        $numIndicators_warningAlarm = count($warningAlarm_array) + $num_alarm_2kg_7days - 1; // contamos el número de nombres de datos -1 para descartar n/a
-        $numIndicators_cautionAlarm = count($cautionAlarm_array) + $num_alarm_2kg_2days + $alarm_2kg_7days_edema - 2; // -1 contamos el número de nombres de datos -1 para descartar n/a
+        $numIndicators_warningAlarm = count($warningAlarm_array) + $num_alarm_2kg_7days + $num_alarm_2kg_2days - 1; // contamos el número de nombres de datos -1 para descartar n/a
+        $numIndicators_cautionAlarm = count($cautionAlarm_array) + $num_alarm_2kg_2days + $alarm_2kg_7days_edema - 1; // -1 contamos el número de nombres de datos -1 para descartar n/a
         $numIndicators_dangerAlarm = count($dangerAlarm_array) + $num_alarm_2kg_2days_edema - 1; // contamos el número de nombres de datos -1 para descartar n/a
 
         /*
