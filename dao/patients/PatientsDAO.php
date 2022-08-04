@@ -21,7 +21,8 @@
 
             $result = array();
 
-            $rs = $db->Execute( "SELECT * FROM patients ORDER BY id ASC" );
+            $rs = $db->Execute( "SELECT * FROM patients WHERE id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."') ORDER BY id ASC"
+        );
             
             while (!$rs->EOF) {
 
@@ -59,7 +60,7 @@
 
             $result = array();
 
-            $rs = $db->Execute( "SELECT id_string FROM patients ORDER BY id ASC" );
+            $rs = $db->Execute( "SELECT id_string FROM patients WHERE id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."') ORDER BY id ASC" );
             
             while (!$rs->EOF) {
 
@@ -136,6 +137,7 @@
                 
                         )
                     )
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
                 " 
             );
             
@@ -186,8 +188,8 @@
                             (patients_data.record_date >= (NOW() - INTERVAL 2 DAY))
 
                         )
-                
                     )
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
                " 
             );
             
@@ -237,8 +239,8 @@
                 
                         (patients_data.record_date >= (NOW() - INTERVAL 1 DAY))
                     )
-            
                 )
+                AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
            " 
             );
             
@@ -284,7 +286,8 @@
                     (patients_chatbot.pregunta = 25 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
                     (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
-            
+
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
                 )
                 " 
             );
@@ -333,7 +336,8 @@
                     (patients_chatbot.pregunta = 22 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
                     (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
-            
+
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')         
                 )
                 " 
             );
@@ -380,7 +384,8 @@
                     (patients_chatbot.pregunta = 24 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
                     (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
-            
+
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')          
                 )
                 " 
             );
@@ -427,7 +432,8 @@
                     (patients_chatbot.pregunta = 23 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
                     (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
-            
+
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
                 )
                 " 
             );
@@ -474,6 +480,8 @@
                     (patients_chatbot.pregunta = 3 AND patients_chatbot.respuesta = 'Peor') AND
             
                     (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
+
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
             
                 )
                 " 
@@ -521,6 +529,8 @@
                     (patients_chatbot.pregunta = 11 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
                     (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
+
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
             
                 )
                 " 
@@ -568,6 +578,8 @@
                     (patients_chatbot.pregunta = 10 AND patients_chatbot.respuesta = 'menos') AND
             
                     (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
+
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
             
                 )
                 " 
@@ -615,7 +627,8 @@
                     (patients_chatbot.pregunta = 8 AND patients_chatbot.respuesta = 'No') AND
             
                     (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
-            
+
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
                 )
                 " 
             );
@@ -662,6 +675,8 @@
                     (patients_chatbot.pregunta = 7 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
                     (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
+
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
             
                 )
                 " 
@@ -709,6 +724,8 @@
                     (patients_chatbot.pregunta = 6 AND (patients_chatbot.respuesta = 'Sí' OR patients_chatbot.respuesta = 'Si')) AND
             
                     (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
+
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
             
                 )
                 " 
@@ -756,6 +773,8 @@
                     (patients_chatbot.pregunta = 5 AND patients_chatbot.respuesta = 'No') AND
             
                     (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
+
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
             
                 )
                 " 
@@ -862,6 +881,8 @@
                                 (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             )
+
+                            AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
                         
                         )
                 " 
@@ -909,6 +930,8 @@
                     (patients_chatbot.pregunta = 2 AND (patients_chatbot.respuesta = 'peor' || patients_chatbot.respuesta = 'igual') ) AND
             
                     (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
+
+                    AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
             
                 )
                 " 

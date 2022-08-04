@@ -134,8 +134,8 @@
 
             $result = array();
 
-            $rs = $db->Execute( "SELECT * FROM patients_data WHERE metric = 'body_weight' ORDER BY id_patient" );
-            
+            // Antigua $rs = $db->Execute( "SELECT * FROM patients_data WHERE metric = 'body_weight' ORDER BY id_patient" );
+            $rs = $db->Execute( "SELECT * FROM patients_data WHERE metric = 'body_weight' AND id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."') ORDER BY id_patient" );
             while (!$rs -> EOF) {
 
                 $patients_dataData = new Patients_dataData();

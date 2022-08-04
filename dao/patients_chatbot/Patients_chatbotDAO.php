@@ -192,6 +192,8 @@
                                 (patients_chatbot.create_ts >= (NOW() - INTERVAL 3 DAY))
                             
                             )
+
+                            AND patients.id IN (SELECT patient_id FROM user_patients WHERE user_mail='".$_SESSION["user_name"]."')
                         
                         )
                 " 
