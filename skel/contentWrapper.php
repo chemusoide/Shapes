@@ -44,16 +44,15 @@
         <div class="topbar-divider d-none d-sm-block"></div>
 
         <!-- Nav Item - User Information -->
-        <li class="nav-item dropdown no-arrow">
-            <span class="nav-link dropdown-toggle" href="#" id="userDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Shapes User</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-            </span>
+        <li class="nav-item dropdown arrow">
+        
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= isset($_SESSION["user_name"])?  $_SESSION["user_name"] : "NoUser"; ?></span>
+        <span class ="mr-2 d-none d-lg-inline text-gray-600 small nav-link"> <a class="text-gray-600" href="index.php?controller=user&amp;option=logout">logout</a></span>
 
         </li>
-
+        
         </ul>
-
+        
     </nav>
     <!-- End of Topbar -->
 <?php
