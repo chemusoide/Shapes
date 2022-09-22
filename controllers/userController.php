@@ -1,6 +1,13 @@
 <?php
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+
+
+	GuardaLog('------------ Entrando userController');
 
     if (defined("SECURITY_CONSTANT")) {
+		
+		GuardaLog('SECURITY_CONSTANT ok');
         
         include_once(DAO_DIR . "/user/UserDAO.php");
 
@@ -104,6 +111,7 @@
 	                break;
 	            	
 	            case "login":
+					GuardaLog('entrando case login');
         	        // Autenticación...
                     if ( isset($_POST["user_name"]) && isset($_POST["user_password"]) ) {
 
@@ -117,6 +125,7 @@
 						
 							$datos = json_encode($datos);
 						
+							GuardaLog('llamando a curl');
 							try {
 								$ch = curl_init($url);
 								curl_setopt($ch, CURLOPT_POSTFIELDS, $datos);
@@ -126,7 +135,9 @@
 								curl_close($ch);
 
 								$data = json_decode($result);
-
+								GuardaLog('data=');
+								GuardaLog($result);
+						
 							}
 							catch (Exception $e) {
 								echo 'Excepción capturada: ',  $e->getMessage(), "\n";
@@ -136,11 +147,15 @@
 
                 	    if ( $data -> code == 200 ) {
 							            	                        	            	        
+							GuardaLog('guardando datos de sesion');
                 	        $_SESSION["user_id"] = 1;
                 	        $_SESSION["user_name"] = $user_name;
-
+							GuardaLog('volvemos al index');
+							//header("Location: index.php");
 							header("Location: index.php");
-                	        
+							exit();
+							GuardaLog('se supone que ya hemos vuelto al index');
+               	        
                 	    } else {
       	        
                 	        $_SESSION["message"] = "Error: wrong username or password.";
